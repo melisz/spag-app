@@ -1,0 +1,292 @@
+<app-nav-bar></app-nav-bar>
+<app-header></app-header>
+<div class="containdiv" *ngIf="logService.findById(editLogId) || editLogId == -1">
+
+  <div class="container-log100">
+    <form class="log100-form" #logForm="ngForm">
+      <span class="log100-form-title">
+        Log - {{ log.date | date:'dd-MM-yyyy'}}
+				</span>
+
+      <div class="tbl">
+        <div class="box">
+          <table>
+            <div class=" label-input100-4-name bg1">
+              <tr class=" td-styles"> Ingevuld door:</tr>
+
+              <input #takeInput2 class="textArea td-style form-control" type="text" name="name" #name="ngModel"
+                     [(ngModel)]="log.name" [ngClass]="{ 'is-invalid': name.invalid }" required ngModel>
+              <div *ngIf="name.invalid" class="invalid-feedback inv">
+                <div *ngIf="name.invalid">Verplicht veld</div>
+              </div>
+            </div>
+
+            <div class=" label-input100-4 bg1">
+              <tr class=" td-styles"> Moet besteld worden:</tr>
+              <textarea class="textArea td-style-box form-control" type="textarea" name="new_order" #new_order="ngModel"
+                        [(ngModel)]="log.new_order" ngModel>    </textarea>
+            </div>
+
+            <div class=" label-input100-4 bg1">
+              <tr class=" td-styles"> Lost and founds:</tr>
+              <textarea class="textArea td-style-box form-control" type="textarea" name="losts" #losts="ngModel"
+                        [(ngModel)]="log.losts" ngModel>    </textarea>
+            </div>
+
+            <div class=" label-input100-4 bg1">
+              <tr class=" td-styles"> Defecten:</tr>
+              <textarea class="textArea td-style-box form-control" type="textarea" name="defects" #defects="ngModel"
+                        [(ngModel)]="log.defects" ngModel>    </textarea>
+            </div>
+          </table>
+        </div>
+
+        <!-- ------------------------------------------------ -->
+
+        <div class="wrap-input100 bg1">
+
+          <br>
+          <table class=" bg1 ">
+
+            <tr class="label-input100">
+              <td class="label-input100-2">Aantal verkochte pasta's restaurant:</td>
+
+              <div class="invalid-div">
+                <div *ngIf="avpr.invalid" class="invalid-feedback inv2">
+                  <div *ngIf="avpr.value == null">Verplicht veld</div>
+                  <div *ngIf="avpr.value != null">Onjuist patroon</div>
+                </div>
+
+                <input class=" td-style4-text form-control" type="number" name="avpr" #avpr="ngModel"
+                       [(ngModel)]="log.pasta_order_res" [ngClass]="{ 'is-invalid': avpr.invalid }"
+                       required ngModel pattern="[0-9]\d*">
+              </div>
+            </tr>
+
+            <tr class="label-input100">
+              <td class="label-input100-2">Aantal verkochte pasta's bezorging:</td>
+
+              <div class="invalid-div">
+                <div *ngIf="avpb.invalid" class="invalid-feedback inv2">
+                  <div *ngIf="avpb.value == null">Verplicht veld</div>
+                  <div *ngIf="avpb.value != null">Onjuist patroon</div>
+                </div>
+
+                <input class=" td-style4-text form-control" type="number" name="avpb" #avpb="ngModel"
+                       [(ngModel)]="log.pasta_order_del" [ngClass]="{ 'is-invalid': avpb.invalid }"
+                       required ngModel pattern="[0-9]\d*">
+              </div>
+            </tr>
+
+            <tr class="label-input100">
+              <td class="label-input100-2">Omzet restaurant:</td>
+
+
+              <div class="invalid-div">
+                <div *ngIf="revenuer.invalid" class="invalid-feedback inv2">
+                  <div *ngIf="revenuer.value == null">Verplicht veld</div>
+                  <div *ngIf="revenuer.value != null">Onjuist patroon</div>
+                </div>
+
+                <input step=".01" class=" td-style4-text form-control" type="number" name="revenuer" #revenuer="ngModel"
+                       [(ngModel)]="log.revenue_res" [ngClass]="{ 'is-invalid': revenuer.invalid }"
+                       required ngModel pattern="^\-?[0-9]+(?:\.[0-9]{1,2})?$">
+              </div>
+            </tr>
+
+            <tr class="label-input100">
+              <td class="label-input100-2">Omzet bezorging:</td>
+
+
+              <div step=".01" class="invalid-div">
+                <div *ngIf="revenued.invalid" class="invalid-feedback inv2">
+                  <div *ngIf="revenued.value == null">Verplicht veld</div>
+                  <div *ngIf="revenued.value != null">Onjuist patroon</div>
+                </div>
+
+                <input step=".01" class=" td-style4-text form-control" type="number" name="revenued" #revenued="ngModel"
+                       [(ngModel)]="log.revenue_del" [ngClass]="{ 'is-invalid': revenued.invalid }"
+                       required ngModel pattern="^\-?[0-9]+(?:\.[0-9]{1,2})?$">
+              </div>
+            </tr>
+
+            <tr class="label-input100">
+              <td class="label-input100-2">Omzet totaal:</td>
+
+              <div class="invalid-div">
+                <div *ngIf="revenuet.invalid" class="invalid-feedback inv2">
+                  <div *ngIf="revenuet.value == null">Verplicht veld</div>
+                  <div *ngIf="revenuet.value != null">Onjuist patroon</div>
+                </div>
+
+                <input step=".01" class=" td-style4-text form-control" type="number" name="revenuet" #revenuet="ngModel"
+                       [(ngModel)]="log.revenue_tot" [ngClass]="{ 'is-invalid': revenuet.invalid }"
+                       required ngModel pattern="^\-?[0-9]+(?:\.[0-9]{1,2})?$">
+              </div>
+            </tr>
+
+            <tr class="label-input100">
+              <td class="label-input100-2">Besteding p/p (excl. bezorging):</td>
+
+              <div class="invalid-div">
+                <div *ngIf="expendpp.invalid" class="invalid-feedback inv2">
+                  <div *ngIf="expendpp.value == null">Verplicht veld</div>
+                  <div *ngIf="expendpp.value != null">Onjuist patroon</div>
+                </div>
+
+                <input step=".01" class=" td-style4-text form-control" type="number" name="expendpp" #expendpp="ngModel"
+                       [(ngModel)]="log.expendpp" [ngClass]="{ 'is-invalid': expendpp.invalid }"
+                       required ngModel pattern="^\-?[0-9]+(?:\.[0-9]{1,2})?$">
+              </div>
+            </tr>
+
+            <tr class="label-input100">
+              <td class="label-input100-2">Gewerkte uren:</td>
+
+              <div class="invalid-div">
+                <div *ngIf="hw.invalid" class="invalid-feedback inv2">
+                  <div *ngIf="hw.value == null">Verplicht veld</div>
+                  <div *ngIf="hw.value != null">Onjuist patroon</div>
+                </div>
+
+                <input step=".01" class=" td-style4-text form-control" type="number" name="hw" #hw="ngModel"
+                       [(ngModel)]="log.houres_worked" [ngClass]="{ 'is-invalid': hw.invalid }"
+                       required ngModel pattern="^\-?[0-9]+(?:\.[0-9]{1,2})?$">
+              </div>
+            </tr>
+
+
+            <tr class="label-input100">
+              <td class="label-input100-2">Rendement (incl bezorging):</td>
+
+              <div class="invalid-div">
+                <div *ngIf="rid.invalid" class="invalid-feedback inv2">
+                  <div *ngIf="rid.value == null">Verplicht veld</div>
+                  <div *ngIf="rid.value != null">Onjuist patroon</div>
+                </div>
+
+                <input step=".01" class=" td-style4-text form-control" type="number" name="rid" #rid="ngModel"
+                       [(ngModel)]="log.return_incl_del" [ngClass]="{ 'is-invalid': rid.invalid }"
+                       required ngModel pattern="^\-?[0-9]+(?:\.[0-9]{1,2})?$">
+              </div>
+            </tr>
+
+            <tr class="label-input100">
+              <td class="label-input100-2">Van ’t huis:</td>
+
+              <div class="invalid-div">
+                <div *ngIf="oh.invalid" class="invalid-feedback inv2">
+                  <div *ngIf="oh.value == null">Verplicht veld</div>
+                  <div *ngIf="oh.value != null">Onjuist patroon</div>
+                </div>
+
+                <input step=".01" class=" td-style4-text form-control" type="number" name="oh" #oh="ngModel"
+                       [(ngModel)]="log.on_house" [ngClass]="{ 'is-invalid': oh.invalid }"
+                       required ngModel pattern="^\-?[0-9]+(?:\.[0-9]{1,2})?$">
+              </div>
+            </tr>
+
+            <tr class="label-input100">
+              <td class="label-input100-2">Korting:</td>
+
+              <div class="invalid-div">
+                <div *ngIf="dis.invalid" class="invalid-feedback inv2">
+                  <div *ngIf="dis.value == null">Verplicht veld</div>
+                  <div *ngIf="dis.value != null">Onjuist patroon</div>
+                </div>
+
+                <input step=".01" class=" td-style4-text form-control" type="number" name="dis" #dis="ngModel"
+                       [(ngModel)]="log.discount" [ngClass]="{ 'is-invalid': dis.invalid }"
+                       required ngModel pattern="^\-?[0-9]+(?:\.[0-9]{1,2})?$">
+              </div>
+            </tr>
+
+
+            <tr class="label-input100">
+              <td class="label-input100-2">Breuk:</td>
+
+              <div class="invalid-div">
+                <div *ngIf="broke.invalid" class="invalid-feedback inv2">
+                  <div *ngIf="broke.value == null">Verplicht veld</div>
+                  <div *ngIf="broke.value != null">Onjuist patroon</div>
+                </div>
+
+                <input step=".01" class=" td-style4-text form-control" type="number" name="broke" #broke="ngModel"
+                       [(ngModel)]="log.broken" [ngClass]="{ 'is-invalid': broke.invalid }"
+                       required ngModel pattern="^\-?[0-9]+(?:\.[0-9]{1,2})?$">
+              </div>
+            </tr>
+
+            <tr class="label-input100">
+              <td class="label-input100-2">Correctie:</td>
+
+              <div class="invalid-div">
+                <div *ngIf="cor.invalid" class="invalid-feedback inv2">
+                  <div *ngIf="cor.value == null">Verplicht veld</div>
+                  <div *ngIf="cor.value != null">Onjuist patroon</div>
+                </div>
+
+                <input step=".01" class=" td-style4-text form-control" type="number" name="cor" #cor="ngModel"
+                       [(ngModel)]="log.correction" [ngClass]="{ 'is-invalid': cor.invalid }" required
+                       pattern="^\-?[0-9]+(?:\.[0-9]{1,2})?$">
+              </div>
+            </tr>
+
+            <tr class="label-input100">
+              <td class="label-input100-2">Kasverschil:</td>
+
+              <div class="invalid-div">
+
+                <div *ngIf="cd.invalid" class="invalid-feedback inv2">
+                  <div *ngIf="cd.value == null">Verplicht veld</div>
+                  <div *ngIf="cd.value != null">Onjuist patroon</div>
+                </div>
+
+                <input step=".01" class="td-style4-text form-control" type="number" name="cd" #cd="ngModel"
+                       [(ngModel)]="log.cash_difference" [ngClass]="{ 'is-invalid': cd.errors }" required ngModel
+                       pattern="^\-?[0-9]+(?:\.[0-9]{1,2})?$">
+              </div>
+            </tr>
+            <br>
+
+          </table>
+        </div>
+        <!-- ----------------------------------------------- -->
+
+        <!-- just an empty row -->
+        <tr class="label-input100">
+          <td class=""></td>
+          <td class=""></td>
+        </tr>
+        <!-- ----------------------------------------------- -->
+      </div>
+
+      <div class="label-input100-4-gd bg1">
+        <tr class=" td-styles"> Bijzonderheden algemeen:</tr>
+
+        <textarea class="gd-div td-style4-box form-control" type="number" name="gd" #gd="ngModel"
+                  [(ngModel)]="log.general_details"></textarea>
+      </div>
+
+      <div class="btnDiv">
+        <button (click)="save()"
+                type="button" class="btn btn-light .btn-block cstm saves">Save
+        </button>
+
+        <button (click)="navigateToLog()"
+                type="button" class="btn btn-light .btn-block cstm cancel">Cancel
+        </button>
+
+        <button (click)="reset()"
+                type="button" class="btn btn-light .btn-block cstm cancel">Reset
+        </button>
+
+        <button (click)="clear()"
+                type="button" class="btn btn-light .btn-block cstm clear">Clear
+        </button>
+
+      </div>
+
+    </form>
+  </div>
+</div>

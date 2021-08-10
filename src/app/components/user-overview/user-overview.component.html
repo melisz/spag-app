@@ -1,0 +1,351 @@
+<app-nav-bar></app-nav-bar>
+<app-header></app-header>
+<div class="widget-block">
+  <div class="card text-white mb-3">
+    <div class="card-header">
+      <h5 class="card-title">Gebruikers
+        <i class= "fa fa-plus" data-toggle="modal" data-target="#modalPoll-3" id="#add"></i>
+      </h5>
+    </div>
+    <div class="table-responsive table-wrapper-scroll-y">
+      <table class="table table-striped table-hover" id="devi-table">
+        <thead>
+        <tr>
+          <th scope="col">Username</th>
+          <th scope="col">Locatie</th>
+          <th scope="col">Wijzig</th>
+          <th scope="col">Account Status</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let a of accounts; let i = index">
+          <td data-label="Username">{{a.username}}</td>
+          <td data-label="Locatie">{{a.location}}</td>
+          <td data-label="Wijzig"><i (click)="editUser(i)"
+                 class="fa fa-edit"
+                 data-toggle="modal"
+                 data-target="#modalPoll-1"></i></td>
+          <td data-label="Account Status">
+            <label class="switch">
+              <input type="checkbox" id="switch"
+                     (click)="setInactive(i)"
+                     [(ngModel)]="a.active">
+              <span class="slider round"></span>
+            </label>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal edit account -->
+<div class="modal fade right" id="modalPoll-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header" style="background-color: #182f4d;">
+        <h5 class="modal-title" style="color: white">Gebruikersgegevens aanpassen</h5>
+
+        <button type="button" class="close" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true" class="white-text" style="color: white;">×</span>
+        </button>
+      </div>
+      <!--Body-->
+<!--      <app-user-detail *ngIf="toEdit" [editAccont]="selectedUser" (closed)="closeDetail($event)"></app-user-detail>-->
+
+      <form (keydown.enter)="$event.preventDefault()" #aform="ngForm">
+        <div class="modal-body">
+          <div>
+            <div class="form-group row">
+              <label for="inputEmail" class="col-sm-3 col-form-label">Username</label>
+              <div class="col-sm-8">
+                <input type="email"
+                       id="inputEmail"
+                       class="form-control"
+                       placeholder="Email"
+                       name="inputEmail"
+                       readonly
+                       [(ngModel)]="editAccount.username">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputName" class="col-sm-3 col-form-label">Naam</label>
+              <div class="col-sm-8">
+                <input type="text"
+                       class="form-control"
+                       id="inputName" placeholder="Naam"
+                       name="inputName"
+                       pattern="^[A-z]*$"
+                       required
+                       [(ngModel)]="editAccount.name">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inlineFormInputGroup" class="col-sm-3 col-form-label">Locatie</label>
+              <div class="col-sm-8" >
+                <!--            <div class="input-group mb-1">-->
+                <select class="custom-select mr-sm-2" name="location" id="inlineFormInputGroup"
+                        #restaurant='ngModel'
+                        required
+                        [(ngModel)]="editAccount.location">
+                  <option value="Spaghetteria Van Woustraat">Spaghetteria Van Woustraat</option>
+                  <option value="Spaghetteria Rijpgracht">Spaghetteria Rijpgracht</option>
+                  <option value="Spaghetteria Jan Hanzenstraat">Spaghetteria Jan Hanzenstraat</option>
+                  <option value="Spaghetteria Wittevrouwensingel">Spaghetteria Wittevrouwensingel</option>
+                  <option value="Spaghetteria Pretoriusstraat">Spaghetteria Pretoriusstraat</option>
+                  <option value="Spaghetteria Korte Koestraat">Spaghetteria Korte Koestraat</option>
+                  <option value="Spaghetteria Olympiaplein">Spaghetteria Olympiaplein</option>
+                  <option value="Spaghetteria Adriaan van Ostadelaan">Spaghetteria Adriaan van Ostadelaan</option>
+                  <option value="Spaghetteria Daniël Stalpertstraat">Spaghetteria Daniël Stalpertstraat</option>
+                  <option value="Spaghetteria Nieuwe Binnenweg">Spaghetteria Nieuwe Binnenweg</option>
+                </select>
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="inputNumber" class="col-sm-3 col-form-label">Nummer</label>
+              <div class="col-sm-8">
+                <input type="text"
+                       class="form-control"
+                       id="inputNumber" placeholder="Telefoonnummer"
+                       name="inputNumber"
+                       required
+                       [(ngModel)]="editAccount.phoneNumber"
+                       pattern="^[0][1-9][0-9]{8}$">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="editpassword" class="col-sm-3 col-form-label">Wachtwoord</label>
+              <div class="col-sm-8">
+                <input type="password"
+                       class="form-control"
+                       id="editpassword"
+                       placeholder="wachtwoord"
+                       required
+                       ngModel
+                       name="password"
+                       [(ngModel)]="newpassword"
+                       minlength="6">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="editpasswordCheck" class="col-sm-3 col-form-label">Wachtwoord</label>
+              <div class="col-sm-8">
+                <input type="password" class="form-control"
+                       placeholder="wachtwoord nogmaals invoeren"
+                       id="editpasswordCheck"
+                       name="passwordCheck"
+                       ngModel
+                       required
+                       [(ngModel)]="passwordCheck"
+                       minlength="6">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="admin" class="col-sm-3 col-form-label">Admin</label>
+              <div class="col-sm-8">
+                <input type="checkbox"
+                       id="admin"
+                       name="admin"
+                       [(ngModel)]="editAccount.admin">
+              </div>
+            </div>
+            <!--        <span class="help-block" *ngIf="">Controleer het wachtwoord</span>-->
+
+          </div>
+        </div>
+
+        <!--      <div *ngIf="isToegevoegd">-->
+        <!--        <p class="account">Nieuw account is toegevoegd</p>-->
+        <!--      </div>-->
+        <!--      &lt;!&ndash;      <span class="help-block" *ngIf="!uform.valid" style="color: indianred;">Vul de gegevens volledig in </span>&ndash;&gt;-->
+
+        <div class="modal-footer ">
+          <button type="reset" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
+          <button type="button" class="btn btn-primary" [disabled]="!aform.valid" (click)="update()">Opslaan</button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+
+<!-- Modal account status -->
+<div class="modal fade right" id="modalPoll-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header" style="background-color: #182f4d;">
+        <h5 class="modal-title" style="color: white">Wijzig wachtwoord</h5>
+
+        <button type="button" class="close" aria-label="Close" (click)="onClose()">
+          <span aria-hidden="true" class="white-text" style="color: white;">×</span>
+        </button>
+      </div>
+      <!--Body-->
+      <form #aform="ngForm">
+        <div class="modal-body">
+          <div class="form-group">
+            <label for="password">Wachtwoord : </label>
+            <input type="password"
+                   id="password"
+                   class="form-control"
+                   ngModel
+                   name="password"
+                   [(ngModel)] = "newpassword" required minlength="6">
+          </div>
+          <div class="form-group">
+            <label for="passwordCheck">Voer het wachtwoord nogmaals in : </label>
+            <input type="password"
+                   id="passwordCheck"
+                   class="form-control"
+                   ngModel
+                   name="passwordCheck"
+                   [(ngModel)] = "passwordCheck" required minlength="6">
+          </div>
+
+        </div>
+        <div class="form-group">
+          <span *ngIf="!passMatch" class="help-block" style="color: indianred;">Wachtwoord komt niet overeen!</span>
+        </div>
+        <!--Footer-->
+        <div class="modal-footer ">
+          <button type="button" class="btn btn-primary waves-effect waves-light"
+                  [disabled]="!aform.valid" style="color: white;"
+                  data-toggle="modal" data-target="#confirmationEdit" (click)="update()">Opslaan
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal add account -->
+<div class="modal fade right" id="modalPoll-3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header" style="background-color: #182f4d;">
+        <h5 class="modal-title" style="color: white">Gebruiker toevoegen</h5>
+
+        <button type="submit" class="close" aria-label="Close" data-dismiss="modal" (click)="clearFields()">
+          <span aria-hidden="true" class="white-text" style="color: white;">×</span>
+        </button>
+      </div>
+      <!--Body-->
+      <form (keydown.enter)="$event.preventDefault()" #uform="ngForm">
+        <div class="modal-body">
+          <div class="form-group row">
+            <label for="newEmail" class="col-sm-3 col-form-label">Email</label>
+            <div class="col-sm-8">
+              <input type="email"
+                     id="newEmail"
+                     class="form-control"
+                     placeholder="Email"
+                     name="inputEmail"
+                     pattern="^[a-z0-9][a-z0-9.]*[@][a-z0-9]*\.[a-z]{2,}$"
+                     required
+                     [(ngModel)]="newUser.username">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="newName" class="col-sm-3 col-form-label">Naam</label>
+            <div class="col-sm-8">
+              <input type="text"
+                     class="form-control"
+                     id="newName" placeholder="Naam"
+                     name="inputName"
+                     pattern="^[A-z]*$"
+                     required
+                     [(ngModel)]="newUser.name">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="inlineFormInputGroup" class="col-sm-3 col-form-label">Locatie</label>
+            <div class="col-sm-8" >
+              <!--            <div class="input-group mb-1">-->
+              <select class="custom-select mr-sm-2" name="location" id="newFormInputGroup"
+                      #restaurant='ngModel'
+                      required
+                      [(ngModel)]="newUser.location">
+                <option value="Spaghetteria Van Woustraat">Spaghetteria Van Woustraat</option>
+                <option value="Spaghetteria Rijpgracht">Spaghetteria Rijpgracht</option>
+                <option value="Spaghetteria Jan Hanzenstraat">Spaghetteria Jan Hanzenstraat</option>
+                <option value="Spaghetteria Wittevrouwensingel">Spaghetteria Wittevrouwensingel</option>
+                <option value="Spaghetteria Pretoriusstraat">Spaghetteria Pretoriusstraat</option>
+                <option value="Spaghetteria Korte Koestraat">Spaghetteria Korte Koestraat</option>
+                <option value="Spaghetteria Olympiaplein">Spaghetteria Olympiaplein</option>
+                <option value="Spaghetteria Adriaan van Ostadelaan">Spaghetteria Adriaan van Ostadelaan</option>
+                <option value="Spaghetteria Daniël Stalpertstraat">Spaghetteria Daniël Stalpertstraat</option>
+                <option value="Spaghetteria Nieuwe Binnenweg">Spaghetteria Nieuwe Binnenweg</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="newNumber" class="col-sm-3 col-form-label">Nummer</label>
+            <div class="col-sm-8">
+              <input type="text"
+                     class="form-control"
+                     id="newNumber" placeholder="Telefoonnummer"
+                     name="inputNumber"
+                     pattern="^[0][1-9][0-9]{8}$"
+                     required
+                     [(ngModel)]="newUser.phoneNumber">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="newpassword" class="col-sm-3 col-form-label">Wachtwoord</label>
+            <div class="col-sm-8">
+              <input type="password"
+                     class="form-control"
+                     id="newpassword"
+                     placeholder="wachtwoord"
+                     required
+                     ngModel
+                     name="password"
+                     [(ngModel)]="newpassword"
+                     minlength="6">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="newpasswordCheck" class="col-sm-3 col-form-label">Wachtwoord</label>
+            <div class="col-sm-8">
+              <input type="password" class="form-control"
+                     placeholder="wachtwoord nogmaals invoeren"
+                     id="newpasswordCheck"
+                     name="passwordCheck"
+                     ngModel
+                     required
+                     [(ngModel)]="passwordCheck"
+                     minlength="6">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="newadmin" class="col-sm-3 col-form-label">Admin</label>
+            <div class="col-sm-8">
+              <input type="checkbox"
+                     id="newadmin"
+                     name="admin"
+                     [(ngModel)]="newUser.admin">
+            </div>
+          </div>
+          <div class="form-group">
+            <div class="help-block">
+              <span *ngIf="!passMatch" class="help-block" style="color: indianred;">Wachtwoord komt niet overeen!</span>
+            </div>
+          </div>
+        </div>
+
+        <!--Footer-->
+        <div class="modal-footer ">
+          <button type="submit" class="btn btn-secondary" data-dismiss="modal" (click)="clearFields()">Annuleren</button>
+          <button type="submit" class="btn btn-primary" [disabled]="!uform.valid" (click)="addUser()">Opslaan</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

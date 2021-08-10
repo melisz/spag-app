@@ -1,0 +1,59 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="modal" id="thisnewDish" tabindex="-1" role="dialog" aria-hidden="true" aria-labelledby="exampleModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title" >Gerecht</p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" (click)="rest()">&times;</span>
+
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="border-table">
+          <br>
+            <table>
+              <tr>
+                <td><i class="fa fa-user" aria-hidden="true"></i></td>
+                <td>Naam:</td>
+<!--                [value]="selectedDish?.name"-->
+                <td><input [(ngModel)]="name" [value]="name" ></td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-folder-open" aria-hidden="true"></i></td>
+                <td>Categorie:</td>
+                <td>
+<!--                  [value]="selectedDish?.categorie"-->
+                  <select [(ngModel)]="categorie"  [value]="categorie" >
+                    <option [value]="null" [selected]="true" disabled> Selecteer een categorie:</option>
+                    <option >Vegetarisch</option>
+                    <option>Vlees</option>
+                    <option>Vis</option>
+                    <option>Speciaal</option>
+                  </select></td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-archive"></i></td>
+                <td> Ingredient: </td>
+                <td><textarea [(ngModel)]="dutch"    [value]="ingredientDutch"   rows="4" cols="30" ></textarea></td>
+              </tr>
+              <tr>
+                <td><i class="fa fa-archive"></i></td>
+                <td>Ingredienti: </td>
+                <td><textarea [(ngModel)]="italian"   [value]="ingredientItalian" rows="4" cols="30" ></textarea></td>
+              </tr>
+            </table>
+            <div class="modal-footer">
+              <button id="close" type="button" class="btn btn-secondary" data-dismiss="modal" (click)="rest()"  >Annuleren</button>
+              <button  (click)="saveDish(selectedDish?.id,name, categorie, dutch, italian)" type="button" class="btn btn-primary" >Opslaan</button>
+            </div>
+          </div>
+
+          </div>
+        </div>
+      </div>
+      <br>
+    </div>
+
+

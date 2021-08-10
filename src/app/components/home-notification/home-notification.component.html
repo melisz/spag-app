@@ -1,0 +1,152 @@
+<div class="notification-wrapper">
+
+  <div class="notification-btn ndiv" (click)="openNotification(!showNotification)">
+    <span style="color: transparent; margin-right: 12px; width: 13px; height: 13px; margin-top: 2px;"
+          *ngIf="checkSign()" class="badge badge-danger">1</span>
+    <span class="mdi mdi-bell"> <i class="fa fa-bell-o bell" style="font-size: 40px; color: black"></i></span>
+  </div>
+  <div *ngIf="showNotification" class="notification-content">
+    <div class="notification-header">
+      <span class="mdi mdi-settings"></span>
+      <span class="label">Notificaties</span>
+    </div>
+
+    <ul class="ul-st">
+      <li>
+        <div class="divShow">
+          <p class="show">
+            <a class="fa fa-cloud mr-3" style="color: #515151; margin-right: 7px; font-size: 20px"></a>
+            <a (click)="route.navigate(['messages'])">U heeft {{ notificationService.countMes() }}
+              ongelezen berichten</a>
+          </p>
+        </div>
+      </li>
+    </ul>
+
+    <ul *ngIf="admin == 'false'" class="ul-st">
+      <li>
+        <div *ngIf="logService.file == null" class="divShow">
+          <p class="show">
+            <a class="fa fa-file mr-3" style="color: #515151; margin-left: 5px; font-size: 20px"></a>
+            <a (click)="open(content)" style=" ">Dagmenu upload</a>
+          </p>
+          <a (click)="logService.downloadFileTodayRestaurant()" class="fa fa-download downloadCss"></a>
+        </div>
+      </li>
+    </ul>
+
+    <ul *ngIf="admin == 'true'" class="ul-st">
+      <li>
+        <div class="divShow">
+          <p class="show">
+            <a class="fa fa-file mr-3" style="color: #515151; margin-left: 5px; font-size: 20px"></a>
+            <a
+              (click)="route.navigate(['view-all'])">U heeft
+              {{ _notificationService.countLogs() }} ongelezen logs</a>
+          </p>
+        </div>
+      </li>
+    </ul>
+
+    <ul *ngIf="admin == 'true'" class="ul-st">
+      <li>
+        <div class="divShow">
+
+          <h6 style="margin-left: 20px; color: #212322; font-weight: bold;"
+          >Ongecheckte voltooide taken:</h6>
+
+        </div>
+      </li>
+    </ul>
+
+    <ul *ngIf="admin == 'false'" class="ul-st">
+      <li>
+        <div class="divShow">
+
+          <h6 style="margin-left: 20px; color: #212322; font-weight: bold; font-size: 15px;"
+          >Onvoltooide taken die binnenkort verlopen:</h6>
+
+        </div>
+      </li>
+    </ul>
+
+    <div *ngIf="admin == 'false'">
+      <ul class="ndiv2" style="width:100%" *ngFor="let item of notificationService.nfs">
+        <li>
+          <div style="vertical-align: top" class="checkbox">
+            <div class="flex-row">
+              <label class="container">
+              </label>
+              <h2 (click)="isSelected(item)" class="text3"><span *ngIf="item.type == myEnum.mes; else elseBlock">
+                <a class="fa fa-cloud" style="color: #515151; "> </a> </span>
+                <ng-template #elseBlock><a class="fa fa-thumbtack"
+                                           style="font-size:25px; color: rgb(81,81,81);"></a></ng-template>
+                {{ item.title }}</h2>
+            </div>
+            <h3 (click)="isSelected(item)" class="text2">
+              Deadline: {{ item.deadline | date: 'dd-MM-yyyy' }} -
+              Nog {{  _notificationService.calculateDiff(item.deadline) }} dagen </h3>
+          </div>
+        </li>
+      </ul>
+    </div>
+
+    <div *ngIf="admin == 'true'">
+      <ul class="ndiv2" style="width:100%" *ngFor="let item of notificationService.nfs">
+        <li>
+          <div style="vertical-align: top" class="checkbox">
+            <div class="flex-row">
+              <label class="container">
+              </label>
+              <h2 (click)="isSelected(item)" class="text3"><span *ngIf="item.type == myEnum.mes; else elseBlock">
+                <a class="fa fa-cloud" style="color: #515151; "> </a> </span>
+                <ng-template #elseBlock><i class="fas fa-thumbtack"
+                                           style="font-size:25px; color: rgb(81,81,81);"></i></ng-template>
+                {{ item.title }}</h2>
+            </div>
+            <h3 (click)="isSelected(item)" class="text77">
+              Restaurant: {{ item.location }} </h3>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+<ng-template #content let-modal>
+  <div class="modal-header">
+    <h4 class="modal-title"
+        id="modal-basic-title">
+      Menu upload
+    </h4>
+    <button type="button" class="close"
+            aria-label="Close" (click)=
+              "modal.dismiss('Cross click')">
+
+            <span aria-hidden="true">
+                ×
+            </span>
+    </button>
+  </div>
+  <div class="modal-body">
+    <form [formGroup]="uploadForm" (submit)="onSubmit()"
+          id="uploadFiles" name="uploadFiles" method="post" encType="multipart/form-data">
+      <div>
+        <div class="input">
+          <input class="input" #myInput type="file" name="profile" (change)="onFileSelect($event)"/>
+        </div>
+        <br>
+      </div>
+      <div class="modal-footer">
+        <button (click)=
+                  "modal.dismiss('Cross click')" type="submit" class="btn btn-light .btn-block cstm5">Upload
+        </button>
+      </div>
+    </form>
+  </div>
+</ng-template>
+
+
+
+
+

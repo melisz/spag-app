@@ -1,0 +1,750 @@
+.contact1{
+  float: left;
+  width: 40%;
+}
+.contact2{
+  float: left;
+  width: 40%;
+}
+
+
+/*table, th, td {*/
+/*  border: 1px solid black;*/
+
+/*}*/
+.ingredientstable {
+  position: absolute;
+  /*top: 10%;*/
+  top: 20%;
+  left: 25%;
+  /*width: 30%;*/
+  border-collapse: collapse;
+}
+.ingredientstable1{
+  position: absolute;
+  /*top: 10%;*/
+  top: 20%;
+  right: 10%;
+  /*width: 30%;*/
+  border-collapse: collapse;
+}
+
+/*th{*/
+/*  text-align: center;*/
+/*  background-color: #182f4d;*/
+/*  color: white;*/
+/*}*/
+/*th, td {*/
+/*  padding: 8px;*/
+/*}*/
+.addDish{
+  float: right;
+}
+.addDishrow{
+  border-left-style: hidden;
+}
+.iconMenu{
+  float: right;
+}
+
+/*.table{*/
+/*  height: 250px;*/
+/*}*/
+.my-custom-scrollbar {
+  position: relative;
+  height: 500px;
+  overflow: auto;
+}
+.table-wrapper-scroll-y {
+  display: block;
+}
+
+.widget-header{
+  background-color: #2399e4;
+  padding: 1px;
+  border: 1px solid lightgray;
+  text-align: center;
+  color: white;
+}
+
+.widget-block{
+  position: relative;
+  height: 250px;
+  margin-bottom: 75px;
+  margin-left: 10px;
+  cursor: pointer;
+  min-width: 350px;
+}
+
+.card-header{
+  background: #182f4d;
+  padding: .75rem 1.25rem;
+}
+.addNewContact{
+  float:right;
+}
+
+.background-contactlist {
+  background: #182f4d;
+  padding: 0.2% 0.7% 4%;
+  /*border-radius:  4%;*/
+  border-radius: 25px;
+
+  font-family: Arial, sans-serif;
+  /*chance*/
+
+  width: 100%;
+}
+.container{
+  border-radius: 5%;
+  /*display: -moz-grid-line;*/
+}
+
+.title {
+  color: #faf5ff;
+  text-align: center;
+  margin: auto;
+  /*width: 50%;*/
+  text-decoration: underline;
+  font-size: 150%;
+
+}
+.contact-button{
+  border-radius: 14px;
+  padding: 4px 30px;
+  opacity: 1;
+  transition: 0.3s;
+  display: inline-block;
+  text-decoration: none;
+  cursor: pointer;
+  width: 100%;
+  position: relative;
+
+}
+
+.contact-button:hover {opacity: 0.6}
+
+.contact-text{
+  text-align: left;
+  /*padding: 0;*/
+  display: inline-block;
+  /*width: 20%;*/
+  /*margin-left: 20px;*/
+
+}
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  margin-right: 2%;
+  color: white;
+}
+
+/*table{*/
+/*  overflow-x: auto;*/
+/*}*/
+
+
+details {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(24, 47, 77, 0.1);
+}
+details:last-of-type {
+  border-bottom: none;
+}
+details summary {
+  display: block;
+  user-select: none;
+  outline: none;
+  padding: 20px;
+  margin-bottom: 0px;
+  transition: all 600ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition-property: margin, background;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+details summary:last-of-type {
+  border-bottom: none;
+}
+details summary::-webkit-details-marker {
+  display: none;
+}
+details summary:before {
+  font: normal normal normal 1em/1 FontAwesome;
+  font-weight: 900;
+  content: "";
+  margin-right: 0.5em;
+}
+details summary:hover {
+  background: #f6f8fb;
+  cursor: pointer;
+}
+details summary.success:before {
+  color: #9cc320;
+  content: "\f058";
+}
+details summary.warning:before {
+  color: #ffa50a;
+  content: "\f06a";
+}
+details summary.failure:before {
+  color: #da281e;
+  content: "\f057";
+}
+details ul {
+  padding: 0;
+  margin-left: 1em;
+}
+details ul li {
+  list-style: none;
+  padding: 1em 1em 1em 3em;
+  font-weight: bold;
+  position: relative;
+}
+details ul li:before {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  float: left;
+  content: "";
+  width: 0em;
+  height: 1.5em;
+  border-left: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+details ul li:after {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  display: block;
+  float: left;
+  content: "";
+  width: 1em;
+  height: 100%;
+  border-left: 1px solid #ccc;
+}
+details ul li:last-child:after {
+  display: none;
+}
+details ul li div {
+  opacity: 0;
+}
+details ul li div:before {
+  font: normal normal normal 1em/1 FontAwesome;
+  font-weight: 900;
+  position: absolute;
+  top: 50%;
+  left: 1em;
+  padding: 0 0.5em;
+  display: block;
+  float: left;
+  content: "";
+  width: 1em;
+  height: 100%;
+}
+details ul li div.success:before {
+  color: #9cc320;
+  content: "\f058";
+}
+details ul li div.warning:before {
+  color: #ffa50a;
+  content: "\f06a";
+}
+details ul li div.failure:before {
+  color: #da281e;
+  content: "\f057";
+}
+
+details[open] summary {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+details[open] summary ~ ul li:nth-child(1) div,
+details[open] summary ~ ul li:nth-child(1) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0s;
+}
+details[open] summary ~ ul li:nth-child(1):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 0.1s;
+}
+details[open] summary ~ ul li:nth-child(2) div,
+details[open] summary ~ ul li:nth-child(2) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0.1s;
+}
+details[open] summary ~ ul li:nth-child(2):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 0.2s;
+}
+details[open] summary ~ ul li:nth-child(3) div,
+details[open] summary ~ ul li:nth-child(3) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0.2s;
+}
+details[open] summary ~ ul li:nth-child(3):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 0.3s;
+}
+details[open] summary ~ ul li:nth-child(4) div,
+details[open] summary ~ ul li:nth-child(4) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0.3s;
+}
+details[open] summary ~ ul li:nth-child(4):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 0.4s;
+}
+details[open] summary ~ ul li:nth-child(5) div,
+details[open] summary ~ ul li:nth-child(5) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0.4s;
+}
+details[open] summary ~ ul li:nth-child(5):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 0.5s;
+}
+details[open] summary ~ ul li:nth-child(6) div,
+details[open] summary ~ ul li:nth-child(6) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0.5s;
+}
+details[open] summary ~ ul li:nth-child(6):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 0.6s;
+}
+details[open] summary ~ ul li:nth-child(7) div,
+details[open] summary ~ ul li:nth-child(7) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0.6s;
+}
+details[open] summary ~ ul li:nth-child(7):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 0.7s;
+}
+details[open] summary ~ ul li:nth-child(8) div,
+details[open] summary ~ ul li:nth-child(8) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0.7s;
+}
+details[open] summary ~ ul li:nth-child(8):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 0.8s;
+}
+details[open] summary ~ ul li:nth-child(9) div,
+details[open] summary ~ ul li:nth-child(9) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0.8s;
+}
+details[open] summary ~ ul li:nth-child(9):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 0.9s;
+}
+details[open] summary ~ ul li:nth-child(10) div,
+details[open] summary ~ ul li:nth-child(10) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0.9s;
+}
+details[open] summary ~ ul li:nth-child(10):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1s;
+}
+details[open] summary ~ ul li:nth-child(11) div,
+details[open] summary ~ ul li:nth-child(11) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1s;
+}
+details[open] summary ~ ul li:nth-child(11):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1.1s;
+}
+details[open] summary ~ ul li:nth-child(12) div,
+details[open] summary ~ ul li:nth-child(12) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1.1s;
+}
+details[open] summary ~ ul li:nth-child(12):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1.2s;
+}
+details[open] summary ~ ul li:nth-child(13) div,
+details[open] summary ~ ul li:nth-child(13) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1.2s;
+}
+details[open] summary ~ ul li:nth-child(13):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1.3s;
+}
+details[open] summary ~ ul li:nth-child(14) div,
+details[open] summary ~ ul li:nth-child(14) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1.3s;
+}
+details[open] summary ~ ul li:nth-child(14):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1.4s;
+}
+details[open] summary ~ ul li:nth-child(15) div,
+details[open] summary ~ ul li:nth-child(15) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1.4s;
+}
+details[open] summary ~ ul li:nth-child(15):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1.5s;
+}
+details[open] summary ~ ul li:nth-child(16) div,
+details[open] summary ~ ul li:nth-child(16) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1.5s;
+}
+details[open] summary ~ ul li:nth-child(16):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1.6s;
+}
+details[open] summary ~ ul li:nth-child(17) div,
+details[open] summary ~ ul li:nth-child(17) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1.6s;
+}
+details[open] summary ~ ul li:nth-child(17):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1.7s;
+}
+details[open] summary ~ ul li:nth-child(18) div,
+details[open] summary ~ ul li:nth-child(18) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1.7s;
+}
+details[open] summary ~ ul li:nth-child(18):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1.8s;
+}
+details[open] summary ~ ul li:nth-child(19) div,
+details[open] summary ~ ul li:nth-child(19) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1.8s;
+}
+details[open] summary ~ ul li:nth-child(19):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1.9s;
+}
+details[open] summary ~ ul li:nth-child(20) div,
+details[open] summary ~ ul li:nth-child(20) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1.9s;
+}
+details[open] summary ~ ul li:nth-child(20):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2s;
+}
+details[open] summary ~ ul li:nth-child(21) div,
+details[open] summary ~ ul li:nth-child(21) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2s;
+}
+details[open] summary ~ ul li:nth-child(21):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2.1s;
+}
+details[open] summary ~ ul li:nth-child(22) div,
+details[open] summary ~ ul li:nth-child(22) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2.1s;
+}
+details[open] summary ~ ul li:nth-child(22):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2.2s;
+}
+details[open] summary ~ ul li:nth-child(23) div,
+details[open] summary ~ ul li:nth-child(23) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2.2s;
+}
+details[open] summary ~ ul li:nth-child(23):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2.3s;
+}
+details[open] summary ~ ul li:nth-child(24) div,
+details[open] summary ~ ul li:nth-child(24) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2.3s;
+}
+details[open] summary ~ ul li:nth-child(24):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2.4s;
+}
+details[open] summary ~ ul li:nth-child(25) div,
+details[open] summary ~ ul li:nth-child(25) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2.4s;
+}
+details[open] summary ~ ul li:nth-child(25):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2.5s;
+}
+details[open] summary ~ ul li:nth-child(26) div,
+details[open] summary ~ ul li:nth-child(26) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2.5s;
+}
+details[open] summary ~ ul li:nth-child(26):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2.6s;
+}
+details[open] summary ~ ul li:nth-child(27) div,
+details[open] summary ~ ul li:nth-child(27) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2.6s;
+}
+details[open] summary ~ ul li:nth-child(27):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2.7s;
+}
+details[open] summary ~ ul li:nth-child(28) div,
+details[open] summary ~ ul li:nth-child(28) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2.7s;
+}
+details[open] summary ~ ul li:nth-child(28):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2.8s;
+}
+details[open] summary ~ ul li:nth-child(29) div,
+details[open] summary ~ ul li:nth-child(29) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2.8s;
+}
+details[open] summary ~ ul li:nth-child(29):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2.9s;
+}
+details[open] summary ~ ul li:nth-child(30) div,
+details[open] summary ~ ul li:nth-child(30) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2.9s;
+}
+details[open] summary ~ ul li:nth-child(30):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3s;
+}
+details[open] summary ~ ul li:nth-child(31) div,
+details[open] summary ~ ul li:nth-child(31) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3s;
+}
+details[open] summary ~ ul li:nth-child(31):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3.1s;
+}
+details[open] summary ~ ul li:nth-child(32) div,
+details[open] summary ~ ul li:nth-child(32) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3.1s;
+}
+details[open] summary ~ ul li:nth-child(32):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3.2s;
+}
+details[open] summary ~ ul li:nth-child(33) div,
+details[open] summary ~ ul li:nth-child(33) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3.2s;
+}
+details[open] summary ~ ul li:nth-child(33):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3.3s;
+}
+details[open] summary ~ ul li:nth-child(34) div,
+details[open] summary ~ ul li:nth-child(34) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3.3s;
+}
+details[open] summary ~ ul li:nth-child(34):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3.4s;
+}
+details[open] summary ~ ul li:nth-child(35) div,
+details[open] summary ~ ul li:nth-child(35) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3.4s;
+}
+details[open] summary ~ ul li:nth-child(35):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3.5s;
+}
+details[open] summary ~ ul li:nth-child(36) div,
+details[open] summary ~ ul li:nth-child(36) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3.5s;
+}
+details[open] summary ~ ul li:nth-child(36):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3.6s;
+}
+details[open] summary ~ ul li:nth-child(37) div,
+details[open] summary ~ ul li:nth-child(37) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3.6s;
+}
+details[open] summary ~ ul li:nth-child(37):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3.7s;
+}
+details[open] summary ~ ul li:nth-child(38) div,
+details[open] summary ~ ul li:nth-child(38) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3.7s;
+}
+details[open] summary ~ ul li:nth-child(38):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3.8s;
+}
+details[open] summary ~ ul li:nth-child(39) div,
+details[open] summary ~ ul li:nth-child(39) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3.8s;
+}
+details[open] summary ~ ul li:nth-child(39):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3.9s;
+}
+details[open] summary ~ ul li:nth-child(40) div,
+details[open] summary ~ ul li:nth-child(40) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3.9s;
+}
+details[open] summary ~ ul li:nth-child(40):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4s;
+}
+details[open] summary ~ ul li:nth-child(41) div,
+details[open] summary ~ ul li:nth-child(41) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 4s;
+}
+details[open] summary ~ ul li:nth-child(41):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4.1s;
+}
+details[open] summary ~ ul li:nth-child(42) div,
+details[open] summary ~ ul li:nth-child(42) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 4.1s;
+}
+details[open] summary ~ ul li:nth-child(42):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4.2s;
+}
+details[open] summary ~ ul li:nth-child(43) div,
+details[open] summary ~ ul li:nth-child(43) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 4.2s;
+}
+details[open] summary ~ ul li:nth-child(43):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4.3s;
+}
+details[open] summary ~ ul li:nth-child(44) div,
+details[open] summary ~ ul li:nth-child(44) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 4.3s;
+}
+details[open] summary ~ ul li:nth-child(44):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4.4s;
+}
+details[open] summary ~ ul li:nth-child(45) div,
+details[open] summary ~ ul li:nth-child(45) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 4.4s;
+}
+details[open] summary ~ ul li:nth-child(45):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4.5s;
+}
+details[open] summary ~ ul li:nth-child(46) div,
+details[open] summary ~ ul li:nth-child(46) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 4.5s;
+}
+details[open] summary ~ ul li:nth-child(46):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4.6s;
+}
+details[open] summary ~ ul li:nth-child(47) div,
+details[open] summary ~ ul li:nth-child(47) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 4.6s;
+}
+details[open] summary ~ ul li:nth-child(47):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4.7s;
+}
+details[open] summary ~ ul li:nth-child(48) div,
+details[open] summary ~ ul li:nth-child(48) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 4.7s;
+}
+details[open] summary ~ ul li:nth-child(48):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4.8s;
+}
+details[open] summary ~ ul li:nth-child(49) div,
+details[open] summary ~ ul li:nth-child(49) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 4.8s;
+}
+details[open] summary ~ ul li:nth-child(49):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4.9s;
+}
+@keyframes sweep {
+  0% {
+    opacity: 0;
+    margin-left: -1em;
+    margin-right: 1em;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+@keyframes grow {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 1em;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+
+table {
+  width: auto;
+  min-width: 100%;
+}
+
+tr {
+  width: auto;
+  min-width: 100%;
+  overflow: hidden;
+}
+
+tr:nth-child(even)
+{background-color: #e5e5e5;
+  width: auto;
+  min-width: 100%;
+  overflow: hidden;
+}

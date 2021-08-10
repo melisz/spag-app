@@ -1,0 +1,39 @@
+<app-nav-bar></app-nav-bar>
+<app-header></app-header>
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<div  *ngIf="admin == 'false' ">
+<div class="dropdown">
+  <button id="btn" (click)="myFunction()" class="dropbtn" >{{this.show}} <i class="driehoek fa fa-angle-down dropdown-menu-left"></i></button>
+ <div id="myDropdown1" class="dropdown-content card card-body ">
+    <a class="menuselection-dropdown" (click)="showFunctions('Menu')" >Menu</a>
+    <a class="menuselection-dropdown" (click)="showFunctions('Drank')">Dranken menu</a>
+    <a class="menuselection-dropdown" (click)="showFunctions('Ingredient')">Ingredienten</a>
+  </div>
+</div>
+
+<div>
+
+<!--show gerechten-->
+
+  <div *ngIf="this.show == 'Menu'">
+    <app-menu-selection></app-menu-selection>
+  </div>
+
+<!--show dranken-->
+  <div *ngIf="this.show  == 'Drank'">
+    <app-drinks-table></app-drinks-table>
+  </div>
+<!--show ingredienten-->
+  <div *ngIf="this.show  == 'Ingredient'">
+    <app-ingredients-table id="ingredientsTable"></app-ingredients-table>
+  </div>
+</div>
+</div>
+
+<div *ngIf="admin == 'true'">
+  <app-dishes-tm></app-dishes-tm>
+</div>
+
+
+

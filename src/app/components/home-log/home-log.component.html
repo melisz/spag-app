@@ -1,0 +1,66 @@
+<div *ngIf="logService.logObs$ | async" class="widget-block">
+  <div class="card text-white mb-3">
+    <div class="card-header">
+      <h5 class="card-title">Log <a *ngIf="admin == 'false'" routerLink="/log/-1" style="color: white"
+                                    class="fa fa-plus plus"></a></h5>
+    </div>
+
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+      <table class="table table-striped table-hover" id="dev-table">
+        <thead>
+        <tr>
+          <th><a>Gemaakt door</a> <a type="button" class="fa fa-long-arrow-right"
+                                     routerLink="/log"
+                                     style="color: #515151; margin-right:10px; font-size: 25px; float: right; "> </a>
+          </th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let log of logs">
+          <td>
+            <details>
+              <summary>{{log.name}} - {{log.date | date: 'dd-MM-yyyy' }}</summary>
+              <!------------------------------>
+              <div class="container-log100" *ngIf="logService.logObs$ | async">
+                <div routerLink="/log" class="container-log100">
+                  <form class="log100-form">
+                    <div class="tbl">
+                      <div class="box">
+                        <table>
+                          <div class=" label-input100-4-name bg1">
+                            <tr class=" td-styles"> Ingevuld door:</tr>
+                            <tr class="td-style">{{ log.name }}</tr>
+                          </div>
+
+                          <div class=" label-input100-4 bg1">
+                            <tr class=" td-styles"> Moet besteld worden:</tr>
+                            <tr class="td-style">{{ log.new_order }}</tr>
+                          </div>
+
+                          <div class=" label-input100-4 bg1">
+                            <tr class=" td-styles"> Lost and founds:</tr>
+                            <tr class="td-style">{{ log.losts }}</tr>
+                          </div>
+
+                          <div class=" label-input100-4 bg1">
+                            <tr class=" td-styles"> Defecten:</tr>
+                            <tr class="td-style">{{ log.defects }}</tr>
+                          </div>
+                        </table>
+                      </div>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </details>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+
+
+

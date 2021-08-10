@@ -1,0 +1,48 @@
+<div *ngIf="selectedUser !== null;">
+  <div class="card ">
+    <div class="card-header">
+
+      <div>
+        <h4 class="mt-2">
+        <span (click)="changePinned()"
+                [ngClass]="pinned ? 'fa fa-thumb-tack float-right pinned ' : 'fa fa-thumb-tack float-right not-pinned'"></span>
+        <span class="float-right fa fa-arrow-circle-left mr-3" (click)="backToMenu();"></span>
+        </h4>
+        <h4 class="mt-1">{{selectedUser.name}}</h4>
+
+      </div>
+    </div>
+    <div #container class="card-size-messages">
+      <div class="message-align" *ngFor="let message of messages" (invoke)="scrollToBottom()">
+        <div
+          [ngClass]="message.reciever === this.cookieService.get('username') ? 'float-left receiver message-body' : 'float-right sender message-body'">
+          <div class="message-text">
+            {{message.message}}
+          </div>
+          <div class="date float-right">
+            <span class="fa fa-check fa-check-not-read"
+                  *ngIf="message.isread === false && message.sender === this.cookieService.get('username')"></span>
+            <span class="fa fa-check fa-check-read"
+                  *ngIf="message.isread === true && message.sender === this.cookieService.get('username')"></span>
+            <span class="fa fa-thumb-tack pinned ml-1" *ngIf="message.pinned === true"
+                  (click)="pinMessage(message)"></span>
+            <span class="fa fa-thumb-tack not-pinned ml-1" *ngIf="message.pinned === false"
+                  (click)="pinMessage(message)"></span>
+            {{message.datetimesend | date: 'dd-MM-yyyy HH:mm'}}
+          </div>
+        </div>
+      </div>
+
+    </div>
+    <div class="align-new-message">
+      <input [(ngModel)]="newMessage" class="w-75 form-control" (keydown.enter)="sendMessage()"/>
+      <button class="btn btn-primary w-25" (click)="sendMessage()">Send</button>
+    </div>
+  </div>
+</div>
+
+
+
+
+
+

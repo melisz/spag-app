@@ -1,0 +1,67 @@
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<nav class="" id="sidebar" style="font-family: Arial,serif; float: left;z-index: 900;">
+  <div class="custom-menu">
+    <button type="button" id="sidebarCollapse" class="btn btn-primary" (click)="clickNav()">
+      <i class="fa fa-bars"></i>
+      <span class="sr-only">Toggle Menu</span>
+    </button>
+  </div>
+  <div class="p-4">
+    <a href="/#/dashboard"><img [src]="logo" ></a>
+    <h1><a href="/#/dashboard" class="logo"><span class="sidebarRestaurantText">{{ restaurant }}</span></a></h1>
+    <h1><span class="sidebar-name">{{name}}</span></h1>
+    <div *ngIf="admin" class="w-100 form-group">
+      <label for="restaurant">Choose a restaurant:</label>
+      <select [(ngModel)]="restaurant" (ngModelChange)="getSelectedRestaurant($event)" id="restaurant" name="restaurant"
+              class="form-control">
+        <option value="Spaghetteria Van Woustraat">Spaghetteria Van Woustraat</option>
+        <option value="Spaghetteria Rijpgracht">Spaghetteria Rijpgracht</option>
+        <option value="Spaghetteria Jan Hanzenstraat">Spaghetteria Jan Hanzenstraat</option>
+        <option value="Spaghetteria Wittevrouwensingel">Spaghetteria Wittevrouwensingel</option>
+        <option value="Spaghetteria Pretoriusstraat">Spaghetteria Pretoriusstraat</option>
+        <option value="Spaghetteria Korte Koestraat">Spaghetteria Korte Koestraat</option>
+        <option value="Spaghetteria Olympiaplein">Spaghetteria Olympiaplein</option>
+        <option value="Spaghetteria Adriaan van Ostadelaan">Spaghetteria Adriaan van Ostadelaan</option>
+        <option value="Spaghetteria Daniël Stalpertstraat">Spaghetteria Daniël Stalpertstraat</option>
+        <option value="Spaghetteria Nieuwe Binnenweg">Spaghetteria Nieuwe Binnenweg</option>
+      </select>
+    </div>
+    <ul class="list-unstyled components mb-5">
+
+      <li>
+        <a href="/#/dashboard" class="sidebarLink"><span class="fa fa-home mr-3"></span>Dashboard</a>
+      </li>
+
+      <li *ngIf="admin">
+        <a href="/#/view-all" class="sidebarLink"><span class="fa fa-file-text-o mr-3"></span>Ongelezen logs</a>
+      </li>
+
+      <li>
+        <a href="/#/log" class="sidebarLink"><span class="fa fa-list mr-3"></span>Logs</a>
+      </li>
+      <li>
+        <a href="/#/messages" class="sidebarLink"><span class="fa fa-inbox mr-3"></span>Berichten</a>
+      </li>
+      <li>
+        <a href="/#/task" class="sidebarLink"><span class="fa fa-tasks mr-3"></span>Taken</a>
+      </li>
+      <li>
+        <a href="/#/contact" class="sidebarLink"><span class="fa fa-address-book mr-3"></span>Contacten</a>
+      </li>
+      <li>
+        <a href="/#/menu" class="sidebarLink"><span class="fa fa-file mr-3"></span>Menu</a>
+      </li>
+      <li>
+        <a *ngIf="admin" href="/#/user" class="sidebarLink"><span class="fa fa-cog mr-3"></span>Accounts</a>
+      </li>
+    </ul>
+    <div>
+      <button (click)="logout()" class="btn btn-primary">
+        logout
+      </button>
+    </div>
+  </div>
+</nav>
+

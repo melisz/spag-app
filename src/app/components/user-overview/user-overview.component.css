@@ -1,0 +1,201 @@
+.container {
+  width: 100%;
+  padding: 0;
+}
+
+.card{
+  height: 750px;
+}
+
+.card-header{
+  background: #182f4d;
+}
+.widget-block{
+  position: relative;
+  height: 250px;
+  margin-bottom: 75px;
+  margin-left: 10px;
+  cursor: pointer;
+}
+.fa-edit {
+  cursor:pointer;
+}
+
+.fa-plus {
+  float: right;
+  cursor:pointer;
+}
+
+.table-responsive.table-wrapper-scroll-y{
+  max-height: 750px;
+}
+
+/* The switch - the box around the slider */
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 17px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 2px;
+  bottom: 2px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(13px);
+  -ms-transform: translateX(13px);
+  transform: translateX(13px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 17px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+/*#exampleModal{*/
+/*  z-index: 1;*/
+/*}*/
+#modalPoll-1.fade:not(.show) {
+  opacity: inherit;
+  overflow: inherit;
+}
+
+#modalPoll-2.fade:not(.show) {
+  opacity: inherit;
+  overflow: inherit;
+
+}
+.modal{
+  top: 10px;
+}
+
+input.ng-invalid.ng-touched{
+  border: 1px solid red;
+  background-color: #dd9494;
+}
+
+table {
+  border: 1px solid #ccc;
+  border-collapse: collapse;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+table caption {
+  font-size: 1.5em;
+  margin: .5em 0 .75em;
+}
+
+table tr {
+  background-color: #e5e5e5;
+  border: 1px solid #ddd;
+  padding: .35em;
+}
+table tr:nth-child(even)
+{background-color: #f2f2f2;
+  overflow: hidden;
+}
+
+table th,
+table td {
+  padding: .625em;
+  /*text-align: center;*/
+}
+
+table th {
+  font-size: .85em;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+}
+
+@media screen and (max-width: 600px) {
+  table {
+    border: 0;
+  }
+
+  table caption {
+    font-size: 1.3em;
+  }
+
+  table thead {
+    border: none;
+    clip: rect(0 0 0 0);
+    height: 1px;
+    margin: -1px;
+    overflow: hidden;
+    padding: 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  table tr {
+    border-bottom: 3px solid #ddd;
+    display: block;
+    margin-bottom: .625em;
+  }
+
+  table td {
+    border-bottom: 1px solid #ddd;
+    display: block;
+    font-size: .8em;
+    text-align: right;
+  }
+
+  table td::before {
+    /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+    content: attr(data-label);
+    float: left;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  table td:last-child {
+    border-bottom: 0;
+  }
+}

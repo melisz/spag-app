@@ -1,0 +1,1108 @@
+
+h2 {
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  margin: 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  font-size: 1.1em;
+}
+h2:after {
+  float: right;
+  font-size: 0.9em;
+  font-family: monospace;
+  color: #aaa;
+  line-height: 1.5em;
+}
+
+details {
+  width: 100%;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(24, 47, 77, 0.1);
+}
+details:last-of-type {
+  border-bottom: none;
+}
+details summary {
+  display: block;
+  user-select: none;
+  outline: none;
+  padding: 20px;
+  margin-bottom: 0px;
+  transition: all 600ms cubic-bezier(0.23, 1, 0.32, 1);
+  transition-property: margin, background;
+  font-weight: 600;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+details summary:last-of-type {
+  border-bottom: none;
+}
+details summary::-webkit-details-marker {
+  display: none;
+}
+details summary:before {
+  font: normal normal normal 1em/1 FontAwesome;
+  font-weight: 900;
+  content: "";
+  margin-right: 0.5em;
+}
+details summary:hover {
+  background: #f6f8fb;
+  cursor: pointer;
+}
+details summary.success:before {
+  color: #9cc320;
+  content: "\f058";
+}
+details summary.warning:before {
+  color: #ffa50a;
+  content: "\f06a";
+}
+details summary.failure:before {
+  color: #da281e;
+  content: "\f057";
+}
+details ul {
+  padding: 0;
+  margin-left: 1em;
+}
+details ul li {
+  list-style: none;
+  padding: 1em 1em 1em 3em;
+  font-weight: bold;
+  position: relative;
+}
+details ul li:before {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  float: left;
+  content: "";
+  width: 0em;
+  height: 1.5em;
+  border-left: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+details ul li:after {
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  float: left;
+  content: "";
+  width: 1em;
+  height: 100%;
+  border-left: 1px solid #ccc;
+}
+details ul li:last-child:after {
+  display: none;
+}
+details ul li div {
+  opacity: 0;
+}
+details ul li div:before {
+  font: normal normal normal 1em/1 FontAwesome;
+  font-weight: 900;
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  padding: 0 0.5em;
+  display: block;
+  float: left;
+  content: "";
+  width: 1em;
+  height: 100%;
+}
+details ul li div.success:before {
+  color: #9cc320;
+  content: "\f058";
+}
+details ul li div.warning:before {
+  color: #ffa50a;
+  content: "\f06a";
+}
+details ul li div.failure:before {
+  color: #da281e;
+  content: "\f057";
+}
+
+details[open] summary {
+  margin-bottom: 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+details[open] summary ~ ul li:nth-child(1) div,
+details[open] summary ~ ul li:nth-child(1) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0s;
+}
+details[open] summary ~ ul li:nth-child(1):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 0.1s;
+}
+details[open] summary ~ ul li:nth-child(2) div,
+details[open] summary ~ ul li:nth-child(2) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0.1s;
+}
+details[open] summary ~ ul li:nth-child(2):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 0.2s;
+}
+details[open] summary ~ ul li:nth-child(3) div,
+details[open] summary ~ ul li:nth-child(3) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0.2s;
+}
+details[open] summary ~ ul li:nth-child(3):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 0.3s;
+}
+details[open] summary ~ ul li:nth-child(4) div,
+details[open] summary ~ ul li:nth-child(4) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0.3s;
+}
+details[open] summary ~ ul li:nth-child(4):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 0.4s;
+}
+details[open] summary ~ ul li:nth-child(5) div,
+details[open] summary ~ ul li:nth-child(5) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0.4s;
+}
+details[open] summary ~ ul li:nth-child(5):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 0.5s;
+}
+details[open] summary ~ ul li:nth-child(6) div,
+details[open] summary ~ ul li:nth-child(6) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0.5s;
+}
+details[open] summary ~ ul li:nth-child(6):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 0.6s;
+}
+details[open] summary ~ ul li:nth-child(7) div,
+details[open] summary ~ ul li:nth-child(7) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0.6s;
+}
+details[open] summary ~ ul li:nth-child(7):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 0.7s;
+}
+details[open] summary ~ ul li:nth-child(8) div,
+details[open] summary ~ ul li:nth-child(8) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0.7s;
+}
+details[open] summary ~ ul li:nth-child(8):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 0.8s;
+}
+details[open] summary ~ ul li:nth-child(9) div,
+details[open] summary ~ ul li:nth-child(9) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0.8s;
+}
+details[open] summary ~ ul li:nth-child(9):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 0.9s;
+}
+details[open] summary ~ ul li:nth-child(10) div,
+details[open] summary ~ ul li:nth-child(10) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 0.9s;
+}
+details[open] summary ~ ul li:nth-child(10):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1s;
+}
+details[open] summary ~ ul li:nth-child(11) div,
+details[open] summary ~ ul li:nth-child(11) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1s;
+}
+details[open] summary ~ ul li:nth-child(11):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1.1s;
+}
+details[open] summary ~ ul li:nth-child(12) div,
+details[open] summary ~ ul li:nth-child(12) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1.1s;
+}
+details[open] summary ~ ul li:nth-child(12):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1.2s;
+}
+details[open] summary ~ ul li:nth-child(13) div,
+details[open] summary ~ ul li:nth-child(13) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1.2s;
+}
+details[open] summary ~ ul li:nth-child(13):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1.3s;
+}
+details[open] summary ~ ul li:nth-child(14) div,
+details[open] summary ~ ul li:nth-child(14) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1.3s;
+}
+details[open] summary ~ ul li:nth-child(14):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1.4s;
+}
+details[open] summary ~ ul li:nth-child(15) div,
+details[open] summary ~ ul li:nth-child(15) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1.4s;
+}
+details[open] summary ~ ul li:nth-child(15):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1.5s;
+}
+details[open] summary ~ ul li:nth-child(16) div,
+details[open] summary ~ ul li:nth-child(16) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1.5s;
+}
+details[open] summary ~ ul li:nth-child(16):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1.6s;
+}
+details[open] summary ~ ul li:nth-child(17) div,
+details[open] summary ~ ul li:nth-child(17) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1.6s;
+}
+details[open] summary ~ ul li:nth-child(17):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1.7s;
+}
+details[open] summary ~ ul li:nth-child(18) div,
+details[open] summary ~ ul li:nth-child(18) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1.7s;
+}
+details[open] summary ~ ul li:nth-child(18):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1.8s;
+}
+details[open] summary ~ ul li:nth-child(19) div,
+details[open] summary ~ ul li:nth-child(19) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1.8s;
+}
+details[open] summary ~ ul li:nth-child(19):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 1.9s;
+}
+details[open] summary ~ ul li:nth-child(20) div,
+details[open] summary ~ ul li:nth-child(20) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 1.9s;
+}
+details[open] summary ~ ul li:nth-child(20):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2s;
+}
+details[open] summary ~ ul li:nth-child(21) div,
+details[open] summary ~ ul li:nth-child(21) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2s;
+}
+details[open] summary ~ ul li:nth-child(21):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2.1s;
+}
+details[open] summary ~ ul li:nth-child(22) div,
+details[open] summary ~ ul li:nth-child(22) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2.1s;
+}
+details[open] summary ~ ul li:nth-child(22):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2.2s;
+}
+details[open] summary ~ ul li:nth-child(23) div,
+details[open] summary ~ ul li:nth-child(23) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2.2s;
+}
+details[open] summary ~ ul li:nth-child(23):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2.3s;
+}
+details[open] summary ~ ul li:nth-child(24) div,
+details[open] summary ~ ul li:nth-child(24) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2.3s;
+}
+details[open] summary ~ ul li:nth-child(24):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2.4s;
+}
+details[open] summary ~ ul li:nth-child(25) div,
+details[open] summary ~ ul li:nth-child(25) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2.4s;
+}
+details[open] summary ~ ul li:nth-child(25):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2.5s;
+}
+details[open] summary ~ ul li:nth-child(26) div,
+details[open] summary ~ ul li:nth-child(26) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2.5s;
+}
+details[open] summary ~ ul li:nth-child(26):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2.6s;
+}
+details[open] summary ~ ul li:nth-child(27) div,
+details[open] summary ~ ul li:nth-child(27) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2.6s;
+}
+details[open] summary ~ ul li:nth-child(27):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2.7s;
+}
+details[open] summary ~ ul li:nth-child(28) div,
+details[open] summary ~ ul li:nth-child(28) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2.7s;
+}
+details[open] summary ~ ul li:nth-child(28):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2.8s;
+}
+details[open] summary ~ ul li:nth-child(29) div,
+details[open] summary ~ ul li:nth-child(29) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2.8s;
+}
+details[open] summary ~ ul li:nth-child(29):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 2.9s;
+}
+details[open] summary ~ ul li:nth-child(30) div,
+details[open] summary ~ ul li:nth-child(30) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 2.9s;
+}
+details[open] summary ~ ul li:nth-child(30):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3s;
+}
+details[open] summary ~ ul li:nth-child(31) div,
+details[open] summary ~ ul li:nth-child(31) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3s;
+}
+details[open] summary ~ ul li:nth-child(31):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3.1s;
+}
+details[open] summary ~ ul li:nth-child(32) div,
+details[open] summary ~ ul li:nth-child(32) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3.1s;
+}
+details[open] summary ~ ul li:nth-child(32):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3.2s;
+}
+details[open] summary ~ ul li:nth-child(33) div,
+details[open] summary ~ ul li:nth-child(33) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3.2s;
+}
+details[open] summary ~ ul li:nth-child(33):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3.3s;
+}
+details[open] summary ~ ul li:nth-child(34) div,
+details[open] summary ~ ul li:nth-child(34) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3.3s;
+}
+details[open] summary ~ ul li:nth-child(34):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3.4s;
+}
+details[open] summary ~ ul li:nth-child(35) div,
+details[open] summary ~ ul li:nth-child(35) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3.4s;
+}
+details[open] summary ~ ul li:nth-child(35):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3.5s;
+}
+details[open] summary ~ ul li:nth-child(36) div,
+details[open] summary ~ ul li:nth-child(36) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3.5s;
+}
+details[open] summary ~ ul li:nth-child(36):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3.6s;
+}
+details[open] summary ~ ul li:nth-child(37) div,
+details[open] summary ~ ul li:nth-child(37) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3.6s;
+}
+details[open] summary ~ ul li:nth-child(37):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3.7s;
+}
+details[open] summary ~ ul li:nth-child(38) div,
+details[open] summary ~ ul li:nth-child(38) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3.7s;
+}
+details[open] summary ~ ul li:nth-child(38):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3.8s;
+}
+details[open] summary ~ ul li:nth-child(39) div,
+details[open] summary ~ ul li:nth-child(39) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3.8s;
+}
+details[open] summary ~ ul li:nth-child(39):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 3.9s;
+}
+details[open] summary ~ ul li:nth-child(40) div,
+details[open] summary ~ ul li:nth-child(40) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 3.9s;
+}
+details[open] summary ~ ul li:nth-child(40):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4s;
+}
+details[open] summary ~ ul li:nth-child(41) div,
+details[open] summary ~ ul li:nth-child(41) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 4s;
+}
+details[open] summary ~ ul li:nth-child(41):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4.1s;
+}
+details[open] summary ~ ul li:nth-child(42) div,
+details[open] summary ~ ul li:nth-child(42) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 4.1s;
+}
+details[open] summary ~ ul li:nth-child(42):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4.2s;
+}
+details[open] summary ~ ul li:nth-child(43) div,
+details[open] summary ~ ul li:nth-child(43) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 4.2s;
+}
+details[open] summary ~ ul li:nth-child(43):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4.3s;
+}
+details[open] summary ~ ul li:nth-child(44) div,
+details[open] summary ~ ul li:nth-child(44) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 4.3s;
+}
+details[open] summary ~ ul li:nth-child(44):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4.4s;
+}
+details[open] summary ~ ul li:nth-child(45) div,
+details[open] summary ~ ul li:nth-child(45) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 4.4s;
+}
+details[open] summary ~ ul li:nth-child(45):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4.5s;
+}
+details[open] summary ~ ul li:nth-child(46) div,
+details[open] summary ~ ul li:nth-child(46) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 4.5s;
+}
+details[open] summary ~ ul li:nth-child(46):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4.6s;
+}
+details[open] summary ~ ul li:nth-child(47) div,
+details[open] summary ~ ul li:nth-child(47) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 4.6s;
+}
+details[open] summary ~ ul li:nth-child(47):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4.7s;
+}
+details[open] summary ~ ul li:nth-child(48) div,
+details[open] summary ~ ul li:nth-child(48) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 4.7s;
+}
+details[open] summary ~ ul li:nth-child(48):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4.8s;
+}
+details[open] summary ~ ul li:nth-child(49) div,
+details[open] summary ~ ul li:nth-child(49) div:before {
+  animation: sweep 0.5s ease-in-out normal forwards;
+  animation-delay: 4.8s;
+}
+details[open] summary ~ ul li:nth-child(49):before {
+  animation: grow 0.5s ease-in-out normal forwards;
+  animation-delay: 4.9s;
+}
+@keyframes sweep {
+  0% {
+    opacity: 0;
+    margin-left: -1em;
+    margin-right: 1em;
+  }
+  100% {
+    opacity: 1;
+    margin-left: 0;
+    margin-right: 0;
+  }
+}
+@keyframes grow {
+  0% {
+    width: 0;
+  }
+  100% {
+    width: 1em;
+  }
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+table {
+  width: auto;
+  min-width: 100%;
+}
+
+tr {
+  width: auto;
+  min-width: 100%;
+}
+
+/*---------------------------------------------*/
+
+.bg2 {background-color: #e4e4e4;}
+
+.bg1 {
+  background-color: #ffffff;
+  width: 100%;
+}
+
+.container {
+  position: relative;
+  max-width: 100%;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px 13px 13px;
+  border-top: 1px solid rgba(125, 125, 125, 0.34);
+}
+
+.containdiv {
+  position: relative;
+  max-width: 100%;
+  height: fit-content;
+  width: fit-content;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+  padding: 10px 13px 13px;
+  border-top: 1px solid rgba(125, 125, 125, 0.34);
+}
+
+
+.container-log100 {
+  position: relative;
+  max-width: 100%;
+  padding: 10px;
+  background-color: #182f4d;
+  border-radius: 4px;
+}
+
+.wrap-log100 {
+  width: 600px;
+  background-color: #182f4d;
+  border-radius: 10px;
+  overflow: hidden;
+  padding: 20px 20px 0 20px;
+  margin-bottom: 20px;
+}
+
+.log100-form {
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.divtop {
+  display: flex;
+  position: absolute;
+  flex-direction: row;
+  justify-items: center;
+  justify-content: center;
+  height: 50px;
+  margin-bottom: 40px;
+}
+
+.log100-form-title {
+  display: block;
+  width: 100%;
+  font-family: Arial, serif;
+  font-size: 20px;
+  color: white;
+  line-height: 1;
+  text-align: center;
+  padding-bottom: 15px;
+}
+
+.tbl {
+  width: 100%;
+  display: inline-block;
+  max-width: 100%;
+  height: fit-content;
+  flex-direction: row;
+  justify-content: center;
+  horiz-align: center;
+  position: relative;
+  border-bottom: 1px solid rgba(125, 125, 125, 0.34);
+}
+
+.wrap-input100 {
+  display: inline-block;
+  margin-bottom: 20px;
+  float: right;
+  max-width: 55%;
+  width: fit-content;
+  min-width: 55%;
+  border-radius: 4px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.rs1-wrap-input100 {
+  width: calc((100% - 30px) / 2);
+}
+
+.label-input100 {
+  font-family: Arial, sans-serif;
+  color: #393939;
+  line-height: 1.3;
+}
+
+.label-input100-2 {
+  width: 55%;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  padding-top: 5px;
+  font-weight: bold;
+}
+
+.label-input100-4 {
+  border-radius: 4px;
+  margin-bottom: 23px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-family: Arial, sans-serif;
+  font-weight: normal;
+  color: #393939;
+  line-height: 1.3;
+  width: 100%;
+  min-width: 100%;
+  max-width: 150%;
+  min-height: 92px;
+}
+
+.label-input100-4-name {
+  border-radius: 4px;
+  margin-bottom: 23px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-family: Arial, sans-serif;
+  font-weight: normal;
+  color: #393939;
+  line-height: 1.3;
+  width: 100%;
+  min-width: 100%;
+  max-width: 150%;
+  min-height: 50.5px;
+}
+
+.label-input100-4-gd {
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  font-family: Arial, sans-serif;
+  font-weight: normal;
+  color: #393939;
+  line-height: 1.3;
+  width: 100%;
+  min-width: 100%;
+  max-width: 150%;
+  min-height: 50px;
+}
+
+.label-input100-5 {
+  width: 100px;
+  padding-left: 25px;
+  font-weight: bold;
+}
+
+
+.save {
+  max-width: 30px;
+  max-height: 30px;
+  position: absolute;
+}
+
+.save:hover {
+  max-width: 33px;
+  max-height: 33px;
+
+  transition: all 100ms linear;
+}
+
+.save2 {
+  float: right;
+  border: none;
+}
+
+.cijfers {
+  margin-left: 10px;
+  font-weight: bold;
+  display: block;
+  width: 300px;
+  font-family: Arial, sans-serif;
+  font-size: 20px;
+  color: white;
+  line-height: 1.3;
+}
+
+.viewmore3 {
+  border: 2px solid #343433;
+  font-family: Arial, serif;
+  color: #121212;
+  font-size: 3vh;
+  text-align: center;
+  cursor: pointer;
+  width: 300px;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.viermore3:hover {
+  color: #127a13;
+}
+
+.btnDiv {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  justify-items: center;
+  flex-wrap: wrap;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 10px;
+}
+
+.cstm {
+  width: 100px;
+  height: 30px;
+  margin: 10px;
+  border: 1px solid #121212;
+}
+
+.saves {
+  margin-right: 80px;
+  background-color: rgb(19, 113, 57);
+  color: white;
+}
+
+.clear:hover {
+  color: red;
+}
+
+.saves:hover {
+  color: #2d2d2d;
+}
+
+.cancel:hover {
+  color: red;
+}
+
+
+.viewmore2 {
+  border: 2px solid #343433;
+  font-family: Arial, serif;
+  color: #121212;
+  font-size: 3vh;
+  text-align: center;
+  cursor: pointer;
+  width: 100%;
+  height: 40px;
+  border-radius: 5px;
+}
+
+.viewmore {
+  font-family: Arial, serif;
+  color: #121212;
+  text-align: right;
+  cursor: pointer;
+}
+
+.viewmore:hover {
+  color: #127a13;
+}
+
+.viewmore2:hover {
+  color: #127a13;
+}
+
+.viewmore2:active {
+  padding: 3px 3px 3px 3px;
+  box-shadow: none;
+  background-color: rgba(126, 157, 222, 0.77);
+}
+
+.td-style {
+  width: 100%;
+  padding-left: 25px;
+  padding-right: 25px;
+  font-weight: normal;
+  height: 100%;
+}
+
+.td-style-box {
+  white-space:pre;
+  resize: vertical;
+  width: 100%;
+  height: 100%;
+  padding-left: 25px;
+  padding-right: 25px;
+  font-weight: normal;
+}
+
+.td-style7 {
+  width: 100%;
+  display:flex;
+  flex-wrap:wrap;
+  padding-left: 25px;
+  padding-right: 25px;
+  font-weight: normal;
+  padding-bottom: 9px;
+}
+
+.td-style4 {
+  text-align: right;
+  width: auto;
+  min-width: fit-content;
+  padding-right: 20px;
+}
+
+.td-style4-text {
+  position: static;
+  text-align: left;
+  margin-left:12px;
+  margin-right:12px;
+  margin-top:2px;
+  max-width: 90%;
+  height: 20px;
+}
+
+td-style4-box {
+  white-space:pre;
+  resize: vertical;
+  position: absolute;
+  display: inline-block;
+  width: 70%;
+  padding-left: 50px;
+  padding-right: 50px;
+  margin: 20px;
+  font-weight: normal;
+}
+
+.gd-div {
+  padding-left: 25px;
+  padding-right: 25px;
+}
+
+.td-style5 {
+  text-align: right;
+  min-width: 100%;
+  padding-right: 50px;
+  font-weight: bold;
+}
+
+.td-styles {
+  border-radius: 4px;
+  padding-left: 25px;
+  padding-right: 25px;
+  width: fit-content;
+  min-width: 100%;
+  max-width: 100%;
+  background-color: #e5e5e5;
+  font-weight: bold;
+}
+
+.box {
+  min-height: 100%;
+  float: left;
+  display: flex;
+  max-width: 100%;
+  min-width: 44%;
+  flex-wrap: wrap;
+  position: relative;
+}
+
+.box2 {
+  height: auto;
+  width: 100%;
+  overflow: hidden;
+  border-radius: 13px;
+  margin-bottom: 10px;
+  size: 2.5vh;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+}
+
+.textArea {
+  width: 100%;
+}
+
+.line-break {
+  width: auto;
+  border-top:1px dashed black;
+}
+
+.line-break2 {
+  width: 100%;
+  height: 3vh;
+}
+
+.line-break3 {
+  width: 100%;
+  height: 4.5vh;
+  opacity: 0;
+}
+
+.line-break4 {
+  width: 100%;
+  height: 1.2vh;
+}
+
+.line-break5 {
+  width: 100%;
+  height: 0.7vh;
+}
+
+.upload {
+  width: 100%;
+  text-align:right;
+}
+
+.is-invalid {
+  border: 2px solid red;
+}
+
+.inv {
+  padding-right: 6px;
+  color: red;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  font-size: 13px;
+  display: flex;
+  position: absolute;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.inv2 {
+  color: red;
+  font-weight: bold;
+  font-family: Arial, sans-serif;
+  position: static;
+  font-size: 13px;
+  display: inline-block;
+  width: fit-content;
+  margin-right: 5%;
+  float: right;
+}
+
+.invalid-div {
+  margin: 4px;
+}
+
+.tooltip.has-error .tooltip-inner {
+  background: #a94442;
+  max-width: 100%;
+}
+
+
+.form-control { display: inline-block !important; }
+
+
+@media (max-width: 390px) {
+  .containdiv {
+    width: 100%;
+    position: absolute;
+  }
+}
+
+@media (max-width: 1200px) {
+  .box {
+    width: 100%;
+  }
+}
+
+
+@media (max-width: 1200px) {
+  .wrap-input100 {
+    max-width: 100%;
+    width: 100%;
+  }
+}
+
+
+
+
+
+
+

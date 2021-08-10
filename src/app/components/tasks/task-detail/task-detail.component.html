@@ -1,0 +1,489 @@
+<app-nav-bar></app-nav-bar>
+<app-header></app-header>
+
+<body>
+<div class ="widget-block" >
+  <div class="card text-white mb-3">
+  <div style="background-color: #182f4d; border-radius: 5px">
+    <div class="card-header">
+      <h5 style="text-align: left"> Takenlijst<i class="fa fa-plus" data-toggle="modal" data-target="#modalPoll-1"></i></h5>
+    </div>
+    <div class="checkbox" style="line-height: 1.9; background-color:#f2f2f2;padding-top: 3px; color: black">
+      <label>
+        &nbsp;&nbsp;&nbsp;&nbsp; <input  type="checkbox" (change)="dis1=!dis1" [checked]="dis1" style=" width: 17px;height: 17px;"/><b>&nbsp;&nbsp;({{cmp}}) Voltooide taken</b></label>
+    </div>
+  </div>
+  <div *ngIf="progres1" class="progress" id="progressBar">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+         aria-valuenow="20" aria-valuemin="0" aria-valuemax="100" style="width: 20%"></div>
+  </div>
+  <div *ngIf="progres2" class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+         aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width: 60%"></div>
+  </div>
+  <div *ngIf="progres3" class="progress">
+    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar"
+         aria-valuenow="80" aria-valuemin="0" aria-valuemax="100" style="width: 80%"></div>
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <div *ngIf="dis1===false; else elseBlock">
+          <table class="table table-striped table-hover" id="TaskTable">
+            <thead>
+            <tr>
+              <th scope="col">Taak</th>
+              <th scope="col">Datum</th>
+              <th scope="col">Status</th>
+              <th scope="col">Prioriteit</th>
+              <th scope="col"> Afmaken </th>
+              <th scope="col">Wijzig </th>
+              <th scope="col">Verwijderen</th>
+            </tr>
+            </thead>
+            <tr *ngFor="let task of tasks; let i = index" (click)="onRowSelected(i)" style="text-align: center">
+              <td scope="row" data-label="Taak">
+                {{task.title}}
+              </td>
+              <td scope="row" data-label="Datum">
+               {{task.date}}
+              </td>
+              <td scope="row" data-label="Status">
+                {{task.status}}
+              </td>
+              <td scope="row" data-label="Prioriteit" >
+                <svg *ngIf="task.priority" width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-exclamation-circle" fill="red" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                </svg>
+                <label *ngIf="!task.priority"><strong>-</strong></label>
+              </td>
+              <td scope="row" data-label="Afmaken">
+                <div *ngIf="task.status=='TODO'">
+                  <button class="mybtn" (click)="FindingTask(task.id)" data-toggle="modal" data-target="#modalPoll-3">Done<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="navy" class="bi bi-check2" viewBox="0 0 16 16">
+                    <path d="M13.854 3.646a.5.5 0 0 1 0 .708l-7 7a.5.5 0 0 1-.708 0l-3.5-3.5a.5.5 0 1 1 .708-.708L6.5 10.293l6.646-6.647a.5.5 0 0 1 .708 0z"/>
+                  </svg>
+                  </button>
+                </div>
+                <div *ngIf="task.status=='DONE' && isAdmin"><button class="mybtn" (click)="Checked(i)">Voltooi<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="navy" class="bi bi-check2-all" viewBox="0 0 16 16">
+                  <path d="M12.354 4.354a.5.5 0 0 0-.708-.708L5 10.293 1.854 7.146a.5.5 0 1 0-.708.708l3.5 3.5a.5.5 0 0 0 .708 0l7-7zm-4.208 7l-.896-.897.707-.707.543.543 6.646-6.647a.5.5 0 0 1 .708.708l-7 7a.5.5 0 0 1-.708 0z"/>
+                  <path d="M5.354 7.146l.896.897-.707.707-.897-.896a.5.5 0 1 1 .708-.708z"/>
+                </svg>
+                </button>
+                </div>
+              </td>
+
+              <td scope="row" data-label="Wijzig">
+            <span class="table-up">
+              <a class="indigo-text">
+                <mdb-icon fas icon="long-arrow-alt-up"></mdb-icon>
+              </a>
+            </span>
+                <span class="table-down">
+                  <button type="button" class="btn btn-outline-primary" style="border:transparent" data-toggle="modal" data-target="#modalPoll-2" (click)="FindingTask(task.id)">
+          <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-pencil-square" fill="#333333" xmlns="http://www.w3.org/2000/svg">
+  <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456l-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+  <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5v11z"/>
+</svg>
+        </button>
+            </span>
+              </td>
+              <td scope="row" data-label="Verwijder">
+            <span class="table-Verwijder">
+           <button type="button" class="btn btn-outline-primary" style="border:transparent" data-toggle="modal" data-target="#confirmatioModal">
+          <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="#333333" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"></path>
+          </svg>
+           </button>
+            </span>
+              </td>
+            </tr>
+          </table>
+        </div>
+        <!-------------Afgeronde taken----------------->
+        <ng-template #elseBlock>
+          <table class="table table-striped table-hover" >
+            <thead>
+            <tr>
+              <th scope="col">Taak</th>
+              <th scope="col">Datum</th>
+              <th scope="col">Status</th>
+              <th scope="col">Prioriteit</th>
+              <th scope="col"> Meer </th>
+              <th scope="col">Verwijderen</th>
+            </tr>
+            </thead>
+            <tr *ngFor="let task of taskDo; let i = index" (click)="onDoneSelected(i)">
+              <td scope="row" data-label="Taak">
+                {{task.title}}
+              </td>
+              <td scope="row" data-label="Datum">
+                {{task.date}}
+              </td>
+              <td scope="row" data-label="Status">
+                 {{task.status}}
+              </td>
+              <td scope="row" data-label="Prioriteit">
+                <svg *ngIf="task.priority" width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-exclamation-circle" fill="red" xmlns="http://www.w3.org/2000/svg">
+                  <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+                  <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+                </svg>
+                <label *ngIf="!task.priority"><strong>-</strong></label>
+              </td>
+              <td scope="row" data-label="Meer">
+                <button type="button" class="btn btn-outline-primary" style="border:transparent" data-toggle="modal" data-target="#modalPoll-4" (click)="FindingTask(task.id)">
+                <svg xmlns="http://www.w3.org/2000/svg" width="1.5em" height="1.5em" fill="black" class="bi bi-three-dots-vertical" viewBox="0 0 16 16">
+                  <path d="M9.5 13a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0zm0-5a1.5 1.5 0 1 1-3 0 1.5 1.5 0 0 1 3 0z"/>
+                </svg>
+                </button>
+              </td>
+            <td scope="row" data-label="Verwijder">
+            <span class="table-Verwijder">
+           <button type="button" class="btn btn-outline-primary" style="border:transparent" (click)="removeDone(task.id,i)">
+          <svg width="1.3em" height="1.3em" viewBox="0 0 16 16" class="bi bi-trash-fill" fill="#333333" xmlns="http://www.w3.org/2000/svg">
+          <path fill-rule="evenodd" d="M2.5 1a1 1 0 0 0-1 1v1a1 1 0 0 0 1 1H3v9a2 2 0 0 0 2 2h6a2 2 0 0 0 2-2V4h.5a1 1 0 0 0 1-1V2a1 1 0 0 0-1-1H10a1 1 0 0 0-1-1H7a1 1 0 0 0-1 1H2.5zm3 4a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7a.5.5 0 0 1 .5-.5zM8 5a.5.5 0 0 1 .5.5v7a.5.5 0 0 1-1 0v-7A.5.5 0 0 1 8 5zm3 .5a.5.5 0 0 0-1 0v7a.5.5 0 0 0 1 0v-7z"></path>
+          </svg>
+           </button>
+            </span>
+              </td>
+            </tr>
+          </table>
+        </ng-template>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+
+<!--------------DELETE Confirmation----------------->
+<div class="modal fade right" id="confirmatioModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel">Bevestig om taak te verwijderen </h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+      </div>
+      <div class="modal-body text-center" >
+        <p>Taak Verwijderen ?</p>
+        <button type="button" class="btn btn-danger" (click)="remove(current)" data-dismiss="modal">Ja</button>&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-light" data-dismiss="modal">Nee</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--------------Edit  Confirmation----------------->
+<div class="modal fade right" id="confirmationEdit" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h4 class="modal-title" id="myModalLabel1">Bevestig om taak te bewerken</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+
+      </div>
+      <div class="modal-body text-center" >
+        <p>Taak Bewerken ?</p>
+        <button type="button" class="btn btn-danger" (click)="onUpload()" data-dismiss="modal">Ja</button>&nbsp;&nbsp;&nbsp;
+        <button type="button" class="btn btn-light" data-dismiss="modal">Nee</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: modalPoll -->
+<div class="modal fade right" id="modalPoll-1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header" style="background-color: #182f4d;">
+        <h5 class="heading lead" style="color: white">Voeg een taak toe</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close" (click)="clearField()">
+          <span aria-hidden="true" class="white-text" style="color: white;">×</span>
+        </button>
+      </div>
+
+      <!--Body-->
+      <form #addform="ngForm" method="get">
+        <div class="modal-body">
+          <table style="border-collapse: unset; border: none" width="100%" align="center">
+            <tr style="background-color: white">
+              <td width="30%"><label for="newtitel"><strong>Taak</strong>  </label></td>
+              <td width="40%">
+                <input type="text" class="form-control" [(ngModel)]="newtask.title" id="newtitel" name="newtitel" required>
+              </td>
+              <td width="30%"> &nbsp; </td>
+            </tr>
+            <tr style="background-color: white">
+              <td><label ><strong>Datum</strong> &nbsp; </label></td>
+              <td> <input type="date" class="form-control" [(ngModel)]="newtask.date" id="newDate" name="newDate" required></td>
+            </tr>
+            <tr style="background-color: white">
+              <td><label ><strong>Prioriteit</strong>  &nbsp;&nbsp;</label></td>
+              <td > <span class="form"><input type="checkbox" [(ngModel)]="newtask.priority" name="priority"></span></td>
+            </tr>
+            <tr *ngIf="isAdmin" style="background-color: white">
+              <td><label ><strong>Restaurant</strong> </label></td>
+              <td>
+                <select class="custom-select mr-sm-2" [(ngModel)]="selectedRes" id="restdrop" name="restdrop" selected>
+                  <option value="Kies een restaurant" hidden>Kies een restaurant</option>
+                  <option *ngFor="let eachVal of restaurant">
+                    {{eachVal}}
+                  </option>
+                </select>
+              </td>
+            </tr>
+          </table>
+          <p class="text-center">
+            <strong>Bechrijving</strong>
+          </p>
+          <!--Basic textarea-->
+          <div class="md-form">
+            <textarea type="text" id="form79textarea" class="md-textarea form-control" rows="3" [(ngModel)]="newtask.description" name="description" required></textarea>
+          </div>
+        </div>
+        <!--Footer-->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clearField()">Annuleren</button>
+          <button type="button" class="btn btn-primary" data-dismiss="modal" style="color: white;" [disabled]="!addform.valid" (click)="OnaddTask()">Opslaan
+            <i class="fa fa-paper-plane ml-1"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: ForEdit -->
+
+<div class="modal fade right" id="modalPoll-2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header" style="background-color: #182f4d;">
+        <h5 class="heading lead" style="color: white">Bewerk Taak</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text" style="color: white;">×</span>
+        </button>
+      </div>
+      <!--Body-->
+      <form #aform="ngForm">
+        <div class="modal-body">
+          <table style="border-collapse: unset; border: none" width="100%" align="center">
+            <tr style="background-color:white">
+              <td width="30%"><label for="ftitel1" ><strong>Taak</strong>  </label></td>
+              <td width="40%"><input type="text" class="form-control" id="ftitel1" name="ftitel1"
+                                     required
+                                     name="title"
+                                     [(ngModel)]="test.title"></td>
+              <td width="30%"> &nbsp; </td>
+            </tr>
+            <tr style="background-color:white">
+              <td><label ><strong>Datum</strong> &nbsp; </label></td>
+              <td> <input type="date" class="form-control"
+                          name="date"
+                          [(ngModel)]="test.date" ></td>
+            </tr>
+            <tr style="background-color:white">
+              <td style="background-color: white"><label ><strong>Status</strong> &nbsp; </label></td>
+              <td>
+                <select class="custom-select mr-sm-2"
+                        id="inlineFormCustomSelect"
+                        name="status"
+                        [(ngModel)]="test.status" >
+                  <option value="TODO">TODO</option>
+                  <option value="DONE">DONE</option>
+                </select>
+              </td>
+            </tr>
+            <tr style="background-color:white">
+              <td ><label><strong>Prioriteit</strong></label></td>
+              <td > <span class="form"><input type="checkbox"
+                                              name="priorty"
+                                              [(ngModel)]="test.priority">
+              </span></td>
+            </tr>
+          </table>
+
+          <div *ngIf="uploadFileCheck()">
+            <div class="form-group">
+              <label for="exampleFormControlFile1"></label>
+              <input type="file" (change)="onFileSelected($event)" class="form-control-file"
+                     id="exampleFormControlFile1"
+                     name="file"
+                     required>
+            </div>
+          </div>
+          <br>
+          <div *ngIf="isExist()" class="card" style="width: 100%;">
+            <img class="card-img-top" [src]="retrieveImage" alt="Card image cap">
+          </div>
+
+          <p class="text-center">
+            <strong>Beschrijving</strong>
+          </p>
+          <!--Basic textarea-->
+          <div class="md-form">
+            <textarea type="text" id="form78textarea" class="md-textarea form-control"
+                      rows="3"
+                      name="description"
+                      required
+                      [(ngModel)]="test.description"></textarea>
+          </div>
+        </div>
+
+        <!--Footer-->
+        <div class="modal-footer ">
+          <a type="button" type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clearField()">Annuleren</a>
+          <button type="button" class="btn btn-primary waves-effect waves-light"
+                  [disabled]="!aform.valid" style="color: white;"
+                  data-toggle="modal" data-target="#confirmationEdit">Opslaan
+            <i class="fa fa-paper-plane ml-1"></i>
+          </button>
+        </div>
+      </form>
+
+    </div>
+  </div>
+</div>
+</div>
+
+<!--Done Confirmation-->
+
+<div class="modal fade right" id="modalPoll-3" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header" style="background-color: #182f4d;">
+        <h5 class="heading lead" style="color: white">Voltooi bevestiging - {{test.title}}</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text" style="color: white;">×</span>
+        </button>
+      </div>
+      <!--Body-->
+      <form #aform="ngForm">
+        <div class="modal-body">
+
+          <div >
+            <div class="form-group">
+              <label for="exampleFormControlFile2"></label>
+              <input type="file" (change)="onFileSelected($event)" class="form-control-file"
+                     id="exampleFormControlFile2"
+                     name="file"
+                     required>
+            </div>
+          </div>
+          <br>
+          <p class="text-center">
+            <strong>Beschrijving</strong>
+          </p>
+          <!--Basic textarea-->
+          <div class="md-form">
+            <textarea type="text" id="formarea" class="md-textarea form-control"
+                      rows="3"
+                      name="description"
+                      required
+                      [(ngModel)]="test.description"></textarea>
+          </div>
+        </div>
+        <!--Footer-->
+        <div class="modal-footer ">
+          <a type="button" type="button" class="btn btn-secondary" data-dismiss="modal" (click)="clearField()">Annuleren</a>
+          <button type="button" class="btn btn-primary waves-effect waves-light"
+                  [disabled]="!aform.valid" style="color: white;"
+                  (click)="Bevestiging()"> Bevestiging
+            <i class="fa fa-paper-plane ml-1"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+
+<!-- ShowInfoModal -->
+<div class="modal fade right" id="modalPoll-4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header" style="background-color: #182f4d;">
+        <h5 class="modal-title" style="color: white">Taak informatie</h5>
+
+        <button type="submit" class="close" aria-label="Close" data-dismiss="modal">
+          <span aria-hidden="true" class="white-text" style="color: white;">×</span>
+        </button>
+      </div>
+      <!--Body-->
+      <form (keydown.enter)="$event.preventDefault()" #uform="ngForm" disabled="true">
+        <div class="modal-body">
+          <div class="form-group row">
+            <label for="newEmail" class="col-sm-3 col-form-label">Taak</label>
+            <div class="col-sm-8">
+              <input type="email"
+                     id="newEmail"
+                     class="form-control"
+                     name="inputEmail"
+                     disabled
+                     [(ngModel)]="EditedTask.title">
+            </div>
+          </div>
+          <div class="form-group row">
+            <label for="newName" class="col-sm-3 col-form-label">Datum</label>
+            <div class="col-sm-8">
+              <input type="date"
+                     class="form-control"
+                     id="newName" placeholder="Naam"
+                     name="inputName"
+                     disabled
+                     [(ngModel)]="EditedTask.date" >
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Restaurant</label>
+            <div class="col-sm-8" >
+              <select class="custom-select mr-sm-2" name="location" id="newFormInputGroup"
+                      [(ngModel)]="EditedTask.restaurant" disabled>
+                <option>{{EditedTask.restaurant}}</option>
+              </select>
+            </div>
+          </div>
+          <div class="form-group row">
+            <label class="col-sm-3 col-form-label">Status</label>
+            <div class="col-sm">
+              <select class="custom-select mr-sm-2" name="status" id="statusForm"
+                      [(ngModel)]="EditedTask.status" disabled>
+                <option>{{EditedTask.status}}</option>
+              </select>
+            </div>
+            <label >Prioriteit</label>
+            <div class="col-sm">
+              <input type="checkbox" [(ngModel)]="EditedTask.priority" class="form-control" name="Prioriteit" disabled="disabled">
+            </div>
+          </div>
+          <div class="form-group row">
+            <div *ngIf="isExist()" class="card" style="width: 100%;">
+              <img class="card-img-top" [src]="retrieveImage" alt="Card image cap">
+            </div>
+          </div>
+
+          <p class="text-center">
+           Bechrijving
+          </p>
+          <div class="md-form">
+            <textarea type="text" id="area2" name="area2" class="md-textarea form-control" rows="3" [(ngModel)]="EditedTask.description" disabled></textarea>
+          </div>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

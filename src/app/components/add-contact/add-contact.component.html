@@ -1,0 +1,114 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="modal fade" id="newContactModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title" >Contact</p>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <div class="border-table">
+          <br>
+          <div *ngIf="newContact == false">
+          <table>
+            <tr>
+              <td><i class="fa fa-user" aria-hidden="true"></i></td>
+              <td>Naam</td>
+              <td><input id="name" #name [value]="wijzigContact?.name " ></td>
+            </tr>
+            <tr>
+              <td><i class="fa fa-envelope" aria-hidden="true"></i></td>
+              <td> Email</td>
+              <td> <input id="email" #email [value]="wijzigContact?.email"></td>
+            </tr>
+            <tr>
+              <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
+              <td>Adres</td>
+              <td><input id="adres" #adres [value]="wijzigContact?.adres"></td>
+            </tr>
+            <tr>
+              <td><i class="fa fa-phone" aria-hidden="true"></i></td>
+              <td>Telefoonnummer</td>
+              <td><input  id="telefoonnummer" #telefoonNummer [value]="wijzigContact?.phoneNumber"></td>
+            </tr>
+
+            <tr>
+              <td><i class="fa fa-handshake-o" aria-hidden="true"></i></td>
+              <td> Dienst</td>
+              <td>
+                <select #functie [value]="wijzigContact?.service" class="dienst">
+                  <option value="Ingehuurd">Ingehuurd</option>
+                  <option value="Leverancier">Leverancier</option>
+                </select>
+              </td>
+            </tr>
+            <tr>
+              <td><i class="fa fa-archive"></i></td>
+              <td> Taak </td>
+              <td><textarea id="product"  #task [value]="wijzigContact?.task" rows="4" cols="30" ></textarea></td>
+            </tr>
+          </table>
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
+              <button  (click)="saveContact(wijzigContact.id ,name.value, adres.value, telefoonNummer.value, email.value, task.value, functie.value) " type="button" class="btn btn-primary" data-dismiss="modal">Opslaan</button>
+            </div>
+        </div>
+        <div *ngIf="newContact==true">
+          <table>
+            <tr>
+              <td><i class="fa fa-user" aria-hidden="true"></i></td>
+              <td>Naam</td>
+              <td><input #name  ></td>
+            </tr>
+            <tr>
+              <td><i class="fa fa-envelope" aria-hidden="true"></i></td>
+              <td> Email</td>
+              <td> <input #email></td>
+            </tr>
+            <tr>
+              <td><i class="fa fa-map-marker" aria-hidden="true"></i></td>
+              <td>Adres</td>
+              <td><input #adres ></td>
+            </tr>
+            <tr>
+              <td><i class="fa fa-phone" aria-hidden="true"></i></td>
+              <td>Telefoonnummer</td>
+              <td><input #telefoonNummer></td>
+            </tr>
+
+            <tr>
+              <td><i class="fa fa-handshake-o" aria-hidden="true"></i></td>
+              <td> Dienst</td>
+<!--              <div class="dropdown">-->
+<!--                <button class="dropbtn">Dropdown</button>-->
+<!--                <div class="dropdown-content">-->
+<!--                  <a #functie>Link 2</a>-->
+<!--                  <a #functie >Link 3</a>-->
+<!--                </div>-->
+<!--              </div>-->
+              <td>
+              <select #functie  class="dienst">
+                <option value="Ingehuurd">Ingehuurd</option>
+                <option value="Leverancier">Leverancier</option>
+              </select>
+              </td>
+            </tr>
+            <tr>
+              <td><i class="fa fa-archive"></i></td>
+              <td> Taak</td>
+              <td><textarea #task rows="4" cols="30" ></textarea></td>
+            </tr>
+          </table>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
+            <button  (click)="saveContact(0,name.value, adres.value, telefoonNummer.value, email.value, task.value, functie.value); name.value = ' '; adres.value = ' '; functie.value= 'Ingehuurd';task.value=' ';  email.value=' '; telefoonNummer.value=' ' " type="button" class="btn btn-primary" data-dismiss="modal">Opslaan</button>
+                </div>
+        </div>
+      </div>
+      <br>
+    </div>
+  </div>
+</div>

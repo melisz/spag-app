@@ -1,0 +1,71 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<br>
+<div class="row">
+  <div class="col">
+    <div class ="widget-block">
+      <div class="contact"></div>
+      <div class="card text-white mb-3">
+        <div class="card-header">
+          <h5 class="card-title">Gerecht<i (click)="showDetail(null)" data-toggle="modal" data-target="#thisnewDish" class="addNewContact fa fa-plus"></i></h5>
+        </div>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+          <table class="table table-striped table-hover" >
+            <thead>
+            <tr>
+              <th>Naam</th>
+              <th>Wijzig</th>
+              <th>Verwijderen</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of this.dishes; index as i;" class="menu-title">
+              <td>{{ item.name}}</td>
+              <td><i (click)="showDetail(item)"   data-toggle="modal" data-target="#thisnewDish" class="fa fa-edit"></i></td>
+              <td class="addDishrow"><i (click)="deleteDishFromMenu(item)" class="addDish fa fa-trash"></i></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class ="widget-block">
+      <div class="contact"></div>
+      <div class="card text-white mb-3">
+        <div class="card-header">
+          <h5 class="card-title">Dranken <i data-toggle="modal" data-target="#modalDrinks" class="addNewContact fa fa-plus"></i></h5>
+        </div>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+          <table class="table table-striped table-hover">
+            <thead>
+            <tr>
+              <th>Naam</th>
+              <th>Wijzig</th>
+              <th>Verwijderen</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr *ngFor="let item of this.drink; index as i;" class="menu-title">
+              <td>{{item.name}}</td>
+              <td><i (click)="updateDrinks(item)"   data-toggle="modal" data-target="#modalAddDrinks" class="fa fa-edit"></i></td>
+              <td class="addDishrow"><i (click)="deleteDrinksFromMenu(item)" class="addDish fa fa-trash"></i></td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  <app-new-dish [selectedDish]="clickedDish" [ingredientDutch]="ingredientDutch" [ingredientItalian]="ingredientItalian" (item)="addDish($event)" ></app-new-dish>
+
+
+  <app-drinks-tm-detail (saveNewDrinkInParent)="addDrink($event)" ></app-drinks-tm-detail>
+
+
+  <app-drinks-tm [aDrink]="editDrink" (saveNewDrink)="addDrink($event)"></app-drinks-tm>
+
+
+

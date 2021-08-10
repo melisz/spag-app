@@ -1,0 +1,41 @@
+<!--<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">-->
+<!--<div class="modal fade" id="modalAddDrinks" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">-->
+<!--  <div class="modal-dialog" role="document">-->
+<!--    <div class="modal-content">-->
+<!--      <div class="modal-header">-->
+<!--        <h5 class="modal-title" id="exampleModalLabel">Drank</h5>-->
+<!--        <button type="button" class="close" data-dismiss="modal" aria-label="Close">-->
+<!--          <span aria-hidden="true">&times;</span>-->
+<!--        </button>-->
+<!--      </div>-->
+<!--      <div class="modal-body">-->
+<!--         -->
+<!--      </div>-->
+<!--    </div>-->
+<!--  </div>-->
+<!--</div>-->
+
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<div class="modal fade" id="modalAddDrinks" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <p class="modal-title" >Wijzig</p>
+        <button  type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p class="nameDrink">Naam van de drank: </p><input  class="inputNewDrink" #thatdrink [value]="aDrink?.name">
+      </div>
+      <br>
+            <div class="modal-footer"><button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button>
+              <button (click)="saveNewDrinks(aDrink.idDrink,thatdrink.value); thatdrink.value=''"  data-dismiss="modal" type="button" class="btn btn-primary">Opslaan</button>
+            </div>
+    </div>
+  </div>
+</div>
+
+
+

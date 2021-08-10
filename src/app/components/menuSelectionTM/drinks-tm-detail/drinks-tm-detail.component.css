@@ -1,0 +1,61 @@
+table, th, td {
+  border: 1px solid black;
+}
+.ingredientstable {
+  position: absolute;
+  /*top: 10%;*/
+  /*top: 21%;*/
+  /*left: 25%;*/
+  /*width: 30%;*/
+  border-collapse: collapse;
+}
+.ingredientstable1{
+  position: absolute;
+  /*top: 10%;*/
+  /*top: 21%;*/
+  /*right: 10%;*/
+  /*width: 30%;*/
+  border-collapse: collapse;
+}
+th{
+  text-align: center;
+  background-color: #182f4d;
+  color: white;
+}
+th, td {
+  padding: 4px;
+}
+.modal-body {
+  overflow-y: auto;
+  overflow-x: auto;
+}
+
+.table-ingredientsDutch{
+  width: 48%;
+  float:left;
+}
+
+.table-ingredientsItalian{
+  width: 48%;
+  float:right;
+
+}
+.modal-header{
+  color: white;
+  background-color: #182f4d;
+
+}
+.close{
+  color: white;
+}
+.inputNewDrink{
+  float: left;
+  margin-left: 30px;
+}
+.nameDrink{
+ float: left;
+
+}
+.modal-title{
+  font-size: 30px;
+}

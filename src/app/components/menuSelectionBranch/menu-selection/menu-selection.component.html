@@ -1,0 +1,94 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<br>
+<br>
+<br>
+<br>
+
+<div class="contact1">
+  <div class ="widget-block">
+    <div class="contact"></div>
+    <div class="card text-white mb-3">
+      <div class="card-header">
+        <h5 class="card-title">Menu</h5>
+      </div>
+      <div class="table-wrapper-scroll-y my-custom-scrollbar">
+        <table class="table table-striped table-hover">
+          <thead>
+          <tr>
+            <th>Vegetarisch</th>
+          </tr>
+          </thead>
+          <tbody>
+              <select [(ngModel)] = "dishOne" (change)="genereteIngredientsNl(dishOne)"  class="custom-select" required>
+                <option [selected]="null" [ngValue]="null" disabled > Gerecht 1</option>
+                <option  *ngFor = "let dish of this.vegan"[ngValue] = dish> {{dish.name}}</option>
+              </select>
+          </tbody>
+          <tbody>
+            <select class="custom-select"  [(ngModel)] = "dishTwo" (change)="genereteIngredientsNl(dishTwo)">
+<!--              (change)="genereteIngredientsNl(dishTwo)"-->
+              <option [selected]="null" [ngValue]="null"  disabled> Gerecht 2</option>
+              <option *ngFor = "let dish of this.vegan"[ngValue] = dish> {{dish.name}}</option>
+            </select>
+          </tbody>
+          <thead>
+          <tr>
+            <th>Vlees</th>
+          </tr>
+          </thead>
+          <tbody>
+            <select class="custom-select"  [(ngModel)] = "dishThree" (change)="genereteIngredientsNl(dishThree)">
+              <option [selected]="null" [ngValue]="null"  disabled> Gerecht 3</option>
+              <option *ngFor = "let dish of this.meat"[ngValue] = dish> {{dish.name}}</option>
+            </select>
+          </tbody>
+          <tbody>
+            <select class="custom-select" [(ngModel)] = "dishFour" (change)="genereteIngredientsNl(dishFour)" >
+              <option [selected]="null" [ngValue]="null"  disabled> Gerecht 4</option>
+              <option *ngFor = "let dish of this.meat"[ngValue] = dish> {{dish.name}}</option>
+            </select>
+          </tbody>
+          <thead>
+          <tr>
+            <th>Vis</th>
+          </tr>
+          </thead>
+          <tbody>
+            <select class="custom-select" [(ngModel)] = "dishFive" (change)="genereteIngredientsNl(dishFive)">
+              <option  [selected]="true" [ngValue]="null"  disabled> Gerecht 5</option>
+              <option *ngFor = "let dish of this.fish" [ngValue] = dish> {{dish.name}}</option>
+            </select>
+          </tbody>
+          <tbody>
+            <select class="custom-select" [(ngModel)] = "dishSix" (change)="genereteIngredientsNl(dishSix)">
+              <option  [selected]="true"[ngValue]="null"  disabled> Gerecht 6</option>
+              <option *ngFor = "let dish of this.fish" [ngValue] = dish> {{dish.name}}</option>
+            </select>
+          </tbody>
+          <thead>
+        <tr>
+          <th>Speciaal</th>
+        </tr>
+        </thead>
+          <tbody>
+            <select class="custom-select"  [(ngModel)] = "dishSeven"  (change)="genereteIngredientsNl(dishSeven)" >
+              <option  [ngValue] = "null" [selected]="true"  disabled> Gerecht 7</option>
+              <option  *ngFor = "let dish of this.speciale" [ngValue] = dish> {{dish.name}}</option>
+            </select>
+          </tbody>
+        </table>
+        <div class="buttons-menu">
+          <button class="saveButton" (click)="saveTheMenu(dishOne, dishTwo, dishThree, dishFour, dishFive, dishSix,dishSeven); ">Opslaan</button>
+          <button class="restButton" (click)="rest()"> Reset</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<app-generate-menu [hidden]="true" [dishSeven]="dishSeven" [dishSix]= "dishSix" [dishFive]= "dishFive" [dishFour]= "dishFour" [dishThree]= "dishThree" [dishTwo]= "dishTwo" [dishOne]= "dishOne" [ingredientsList]="ingredientsList"  ></app-generate-menu>
+

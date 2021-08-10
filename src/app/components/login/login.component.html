@@ -1,0 +1,21 @@
+<div class="login-page"></div>
+
+<div class="card w-100 login-card shadow-lg">
+  <div class="card-header"><h4>Login</h4></div>
+  <div class="card-body">
+    <label>Email:</label>
+    <input [className]="success === false ? 'form-control is-invalid': 'form-control'" (keydown.enter)="login()"
+           type="text" id="name"
+           required
+           [(ngModel)]="name" name="name">
+    <label>Wachtwoord:</label>
+    <input [className]="success === false ? 'form-control is-invalid': 'form-control'" (keydown.enter)="login()"
+           type="password" id="password"
+           required
+           [(ngModel)]="password" name="password">
+    <div *ngIf="success === false" class="mt-2 text-danger w-100">The login is niet correct, Probeer het opnieuw</div>
+    <div>
+      <button class="btn btn-primary mt-2 w-50 float-right" (click)="login()" [disabled]="disable">Login</button>
+    </div>
+  </div>
+</div>

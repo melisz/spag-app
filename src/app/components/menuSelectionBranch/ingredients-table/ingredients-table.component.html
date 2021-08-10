@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<br>
+<br>
+<br>
+<br>
+
+<div class="row">
+  <div class="col">
+    <div class ="widget-block">
+      <div class="contact"></div>
+      <div class="card text-white mb-3">
+        <div class="card-header">
+          <!--      pop up laten zien van contact toevoegen-->
+          <h5 class="card-title">Ingredienten</h5>
+        </div>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+          <table class="table table-striped table-hover">
+            <thead>
+            </thead>
+            <tbody>
+            <tr *ngFor="let dutch of list" class="menu-title">
+              <td>{{dutch.nameNL}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="col">
+    <div class ="widget-block">
+      <div class="contact"></div>
+      <div class="card text-white mb-3">
+        <div class="card-header">
+          <!--      pop up laten zien van contact toevoegen-->
+          <h5 class="card-title">Ingredienti</h5>
+        </div>
+        <div class="table-wrapper-scroll-y my-custom-scrollbar">
+          <table class="table table-striped table-hover" id="dev-table">
+            <thead>
+            </thead>
+            <tbody>
+            <tr *ngFor="let italian of list" class="menu-title">
+              <td>{{italian.nameIT}}</td>
+            </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

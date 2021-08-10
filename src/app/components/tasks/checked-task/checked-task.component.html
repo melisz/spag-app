@@ -1,0 +1,122 @@
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" />
+
+<div class ="widget-block">
+  <div class="card text-white mb-3">
+    <div class="card-header">
+      <h5 class="card-title">
+        Onafgeronden taken
+      </h5>
+    </div>
+    <div class="table-wrapper-scroll-y my-custom-scrollbar">
+      <table class="table table-striped table-hover" id="dev-table">
+        <thead>
+        <tr>
+          <th>Taak</th>
+          <th>Datum</th>
+          <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr *ngFor="let task of tasks"
+            data-toggle="modal" data-target="#modalPoll-3" (click)="findingTask(task.id)">
+          <td ><div class="b">{{task.title}}</div></td>
+          <td>{{task.date}}</td>
+          <td>
+            <svg *ngIf="task.priority" width="1.5em" height="1.5em" viewBox="0 0 16 16" class="bi bi-exclamation-circle" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+              <path fill-rule="evenodd" d="M8 15A7 7 0 1 0 8 1a7 7 0 0 0 0 14zm0 1A8 8 0 1 0 8 0a8 8 0 0 0 0 16z"/>
+              <path d="M7.002 11a1 1 0 1 1 2 0 1 1 0 0 1-2 0zM7.1 4.995a.905.905 0 1 1 1.8 0l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 4.995z"/>
+            </svg>
+          </td>
+        </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<!-- Modal: ForPreview -->
+
+<div class="modal fade right" id="modalPoll-3" tabindex="-1" style=" z-index: 1" role="dialog" aria-labelledby="exampleModalLabel"
+     aria-hidden="true" data-backdrop="false">
+  <div class="modal-dialog modal-full-height modal-right modal-notify modal-info" role="document">
+    <div class="modal-content">
+      <!--Header-->
+      <div class="modal-header" style="background-color: #182f4d;">
+        <h5 class="card-title" style="color: white">{{editedTask.title}}</h5>
+
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true" class="white-text" style="color: white;">×</span>
+        </button>
+      </div>
+      <!--Body-->
+      <div class="modal-body">
+        <table border=0 width="100%" align="center">
+          <tr>
+            <td width="30%"><label for="ftitel2" ><strong>Taak</strong>  </label></td>
+            <td width="40%"><input type="text" class="form-control" id="ftitel2" name="ftitel2" value="{{editedTask.title}}" readonly></td>
+            <td width="30%"> &nbsp; </td>
+          </tr>
+          <tr><td colspan=2> &nbsp; </td></tr>
+          <tr>
+            <td><label ><strong>Datum</strong> &nbsp; </label></td>
+            <td> <input type="date" class="form-control" value="{{editedTask.date}}" readonly></td>
+          </tr>
+          <tr><td colspan=2> &nbsp; </td></tr>
+          <tr>
+
+            <td><label ><strong>Status</strong> &nbsp; </label></td>
+            <td>
+              <input type="text" class="custom-select"
+                     value="{{editedTask.status}}" disabled>
+            </td>
+            <td width="30%"> &nbsp; </td>
+          </tr>
+
+          <tr><td colspan=2> &nbsp; </td></tr>
+
+          <tr>
+            <td><label ><strong>Restaurant</strong> &nbsp; </label></td>
+            <td>
+              <input type="text" class="custom-select"
+                     value="{{editedTask.restaurant}}" disabled>
+            </td>
+          </tr>
+          <tr><td colspan=2> &nbsp; </td></tr>
+          <tr>
+            <td><label ><strong>Prioriteit</strong>  &nbsp;&nbsp;</label></td>
+            <td><span class="form">
+              <input type="checkbox" [(ngModel)]="editedTask.priority"
+                     disabled="disabled"
+                     readonly>
+            </span></td>
+          </tr>
+          <tr><td colspan=2> &nbsp;</td></tr>
+          <tr><td colspan=2> &nbsp;</td></tr>
+
+        </table>
+
+        <p class="text-center">
+          <strong>Beschrijving</strong>
+        </p>
+        <!--Basic textarea-->
+        <div class="md-form">
+          <textarea type="text" id="form78textarea" class="md-textarea form-control" rows="3" value="{{editedTask.description}}" readonly></textarea>
+        </div>
+
+        <div class="modal-footer">
+          <table border=0 width="100%" align="center">
+            <tr>
+          <td align="center"><button type="button" class="btn btn-secondary" data-dismiss="modal">Annuleren</button></td>
+          <td align="center">
+            <button type="button" class="btn btn-primary" data-dismiss="modal" style="color: white;" (click)="Checked()" > Voltooi de taak
+            <i class="fas fa-check"></i>
+          </button>
+          </td>
+           </tr>
+          </table>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>

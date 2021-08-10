@@ -1,0 +1,195 @@
+<app-nav-bar></app-nav-bar>
+
+<div class="head-div ">
+  <div class="test text-center">
+    <h3 class="title-text">Ongelezen Logs</h3>
+    <p class="welcome-text">Welkom bij de ongelezen Logs</p>
+  </div>
+  <div>
+    <app-home-notification></app-home-notification>
+  </div>
+
+</div>
+<div class="containdiv" *ngIf="items.length != 0; else elseBlock">
+
+  <aside *ngIf="logService.viewLogObs$ | async" class="carousel__navigation">
+
+    <a (click)="setPrev(index)" href="#carouselExampleCaptions" style="background-color: #182f4d"
+       class="carousel-control-prev-icon custom-icon " data-slide="prev" role="button"
+       data-interval="false"></a>
+
+    <div class="buttons">
+      <ol *ngFor="let item of items; let index=index" [attr.data-slide-to]="index"
+          data-target="#carouselExampleCaptions" data-interval="false">
+        <li class="carousel__navigation-button" [ngClass]="{'actives': id == item.id, 'gelezen': item.checked}"
+            data-interval="false"
+            (click)="onSelect(item)">
+        </li>
+      </ol>
+    </div>
+    <a (click)="setNext(index)" href="#carouselExampleCaptions" style="background-color: #182f4d; float: right"
+       role="button" data-slide="next"
+       class="carousel-control-next-icon custom-icon2" aria-hidden="true"
+       data-interval="false"></a>
+  </aside>
+
+  <div *ngIf="logService.viewLogObs$ | async" id="carouselExampleCaptions" class="carousel" data-interval="false">
+
+    <div class="carousel-item" *ngFor="let item of items; let index = index;let isFirst = first"
+         [ngClass]="{active:isFirst}">
+
+      <form class="log100-form">
+
+        <!-- ------------------------------------------------ -->
+        <div class="btnCheckbox">
+          <input type="checkbox" name="checkbox"
+                 [(ngModel)]="item.checked" class="btnSize" (change)="readedItem(item)">
+          <span class="log100-form-title">
+        {{item.restaurant}} - {{ item.date | date:'dd-MM-yyyy'}}
+				</span>
+        </div>
+
+        <div class="tbl">
+          <div class="box">
+            <table>
+              <div class=" label-input100-4-name bg1">
+                <tr class=" td-styles"> Ingevuld door:</tr>
+                <tr class="td-style">{{ item.name }}</tr>
+              </div>
+
+              <div class=" label-input100-4 bg1">
+                <tr class=" td-styles"> Moet besteld worden:</tr>
+                <tr class="td-style">{{ item.new_order }}</tr>
+              </div>
+
+              <div class=" label-input100-4 bg1">
+                <tr class=" td-styles"> Lost and founds:</tr>
+                <tr class="td-style">{{ item.losts }}</tr>
+              </div>
+
+              <div class=" label-input100-4 bg1">
+                <tr class=" td-styles"> Defecten:</tr>
+                <tr class="td-style">{{ item.defects }}</tr>
+              </div>
+            </table>
+          </div>
+          <!-- ----------------------------------------------- -->
+          <div class="wrap-input100 bg1">
+            <br>
+            <table class=" bg1 ">
+              <tr class="label-input100">
+                <td class="label-input100-2">Aantal verkochte pasta's restaurant:</td>
+                <td class="td-style4">{{ item.pasta_order_res }}</td>
+              </tr>
+
+              <tr class="label-input100">
+                <td class="label-input100-2">Aantal verkochte pasta's bezorging:</td>
+                <td class="td-style4">{{ item.pasta_order_del }}</td>
+              </tr>
+              <!-- ----------------------------------------------- -->
+              <tr style="opacity: 0;">empty row></tr>
+              <tr class="label-input100">
+                <td class="label-input100-2"></td>
+                <td class="td-style4"></td>
+              </tr>
+              <!-- ----------------------------------------------- -->
+              <tr class="label-input100">
+                <td class="label-input100-2">Omzet restaurant:</td>
+                <td class="td-style4">{{ item.revenue_res }}</td>
+              </tr>
+              <tr class="label-input100">
+                <td class="label-input100-2">Omzet bezorging:</td>
+                <td class="td-style4">{{ item.revenue_del }}</td>
+              </tr>
+              <tr class="label-input100">
+                <td class="label-input100-2">Omzet totaal:</td>
+                <td class="td-style4">{{ item.revenue_tot }}</td>
+              </tr>
+              <!-- ----------------------------------------------- -->
+              <tr style="opacity: 0;">empty row></tr>
+
+              <tr class="label-input100">
+                <td class="label-input100-2"></td>
+                <td class="td-style4"></td>
+              </tr>
+              <!-- ----------------------------------------------- -->
+              <tr class="label-input100">
+                <td class="label-input100-2">Besteding p/p (excl. bezorging):</td>
+                <td class="td-style4">{{ item.expendpp }}</td>
+              </tr>
+              <tr class="label-input100">
+                <td class="label-input100-2">Gewerkte uren:</td>
+                <td class="td-style4">{{ item.houres_worked }}</td>
+              </tr>
+              <tr class="label-input100">
+                <td class="label-input100-2">Rendement (incl bezorging):</td>
+                <td class="td-style4">{{ item.return_incl_del }}</td>
+              </tr>
+              <!-- ----------------------------------------------- -->
+              <tr style="opacity: 0;">empty row></tr>
+              <tr class="label-input100">
+                <td class="label-input100-2"></td>
+                <td class="td-style4"></td>
+              </tr>
+              <!-- ----------------------------------------------- -->
+
+              <tr class="label-input100">
+                <td class="label-input100-2">Van ’t huis:</td>
+                <td class="td-style4">{{ item.on_house }}</td>
+              </tr>
+
+              <tr class="label-input100">
+                <td class="label-input100-2">Korting:</td>
+                <td class="td-style4">{{ item.discount }}</td>
+              </tr>
+
+              <tr class="label-input100">
+                <td class="label-input100-2">Breuk:</td>
+                <td class="td-style4">{{ item.broken }}</td>
+              </tr>
+
+              <tr class="label-input100">
+                <td class="label-input100-2">Correctie:</td>
+                <td class="td-style4">{{ item.correction }}</td>
+              </tr>
+
+              <tr class="label-input100">
+                <td class="label-input100-2">Kasverschil:</td>
+                <td class="td-style4">{{ item.cash_difference }}</td>
+              </tr>
+              <br>
+            </table>
+          </div>
+          <!-- ----------------------------------------------- -->
+          <tr class="label-input100">
+            <td class=""></td>
+            <td class=""></td>
+          </tr>
+          <!-- ----------------------------------------------- -->
+        </div>
+        <div class=" label-input100-4-gd bg1">
+          <tr class=" td-styles"> Bijzonderheden algemeen:</tr>
+          <tr class="td-style7">{{ item.general_details }}</tr>
+        </div>
+      </form>
+    </div>
+  </div>
+
+</div>
+
+<ng-template #elseBlock>
+  <div class="geenLogs"><h4>Alle logs zijn gecheckt</h4>
+    <br>
+    <h6 style="font-style: italic">Navigeer naar:</h6>
+
+    <h5 class="redirect" routerLink="/dashboard">Home</h5>
+    <h5 class="redirect" routerLink="/log">Logs</h5>
+  </div>
+</ng-template>
+
+
+
+
+
+
+

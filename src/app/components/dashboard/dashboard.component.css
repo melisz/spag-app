@@ -1,0 +1,114 @@
+html{
+  font-family: Arial, sans-serif;
+
+
+}
+
+
+body {
+  background: #edf5fa;
+  font-family: Arial, sans-serif;
+  float: left;
+  max-width: 100%;
+}
+
+.col{
+  padding: 0;
+  max-width: 100%;
+}
+
+.col-6{
+  max-width: 100%;
+  min-width: 350px;
+  margin-top: 10px;
+}
+
+.header {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 5px 5px;
+  max-width: 100%;
+}
+
+.head {
+  width: 108%;
+}
+
+.main {
+  background: white;
+  z-index:-1;
+  width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+}
+
+.head-div{
+  /*float: top;*/
+  display: flex;
+  flex-direction: row;
+  align-self: flex-start;
+  width: 50%;
+  float: left;
+  z-index:-1;
+}
+.nav{
+  float: left;
+  padding: 0;
+  margin: 0;
+}
+.arrow,.bell{
+font-size: 50px;
+}
+
+.arrow{
+  width:20%;
+  padding-top: 10px;
+  position: relative;
+  margin-left: 5%;
+
+}
+
+.text{
+  text-align: center;
+  vertical-align: top;
+  align-content: center;
+  width:100%;
+  padding-top: 10px;
+
+
+}
+.bell {
+  float: right;
+  margin-right: 3%;
+  margin-left: 8%;
+  padding-top: 15px;
+
+}
+
+.task{
+  float: left;
+  height: auto;
+  margin-bottom: 5%;
+}
+.owntask{
+  float:left;
+  margin-left: 0px;
+}
+.log{
+  height: auto;
+}
+.tasks{
+padding-left: 30px;
+max-width: 67%;
+  width: fit-content;
+  float: left;
+  display: inline-block;
+
+}
+.contact{
+  float:right;
+  width: 30%;
+}
+/*.container-fluid{*/
+/*  background: slategrey;*/
+/*}*/

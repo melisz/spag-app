@@ -1,0 +1,78 @@
+<app-nav-bar></app-nav-bar>
+
+<app-header></app-header>
+<div class="item-align" >
+  <div class="card ml-5" *ngIf="this.selectedUser === null && this.groupMessage === false">
+    <div class="card-header shadow-sm">
+      <button class="btn btn-primary float-right mr-1" (click)="groupMesage()">Groeps berichten</button>
+      <h4 class="mt-1">Berichten</h4>
+    </div>
+    <div class="card-size">
+
+      <div *ngFor="let user of users" (click)="selectUser($event, user)"
+           class="border-bottom contact-container shadow-sm" [class.highlight]="user === selectedUser">
+        <div class="item-align">
+          <img src="assets/images/img_avatar.png" class="user-image ml-1">
+          <div class="ml-3 mt-1">
+            <h5 class="">{{user.name}}</h5>
+            <div *ngIf="user.message !== null"
+                 class="">{{ user.message | slice: 0 : 26  }}{{user.message.length > 26 ? '...' : ''}}</div>
+          </div>
+          <div class="ml-auto ml-1 mt-1 mr-1" *ngIf="user.datetimesend !== null">
+            {{user.datetimesend |   date:  'dd-MM-yyyy'}}
+            <div *ngIf="user.isread === false && user.sender !== cookieService.get('username')" class="dot"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <app-messages-details class="ml-5"
+                        [selectedUser]="selectedUser"
+                        (sortList)="sortList()"
+                        (returnToList)="returnToList()"
+  >
+
+
+  </app-messages-details>
+</div>
+<div class="item-align" *ngIf="this.groupMessage === true">
+  <div *ngIf="!sure" class="card ml-5">
+    <div class="card-header shadow-sm">
+      <button class="btn btn-primary float-right mr-1" (click)="groupMesage()">Berichten</button>
+      <button *ngIf="selectedUsers.length !== users.length" class="btn btn-primary float-right mr-1" (click)="selectAll()">Selecteer iedereen</button>
+      <button *ngIf="selectedUsers.length === users.length" class="btn btn-primary float-right mr-1" (click)="deselectAll()">Selecteer niemand</button>
+      <h4 class="mt-1">Gebruikers</h4>
+    </div>
+    <div class="card-size">
+
+      <div *ngFor="let user of users" (click)="addUser(user)"
+           class="border-bottom contact-container shadow-sm" [class.highlight]="selectedUsers.includes(user)">
+        <div class="item-align">
+          <img src="assets/images/img_avatar.png" class="user-image ml-1">
+          <h5 class="ml-3 mt-1">{{user.name}}</h5>
+
+        </div>
+      </div>
+    </div>
+    <button *ngIf="!sure" [disabled]="(!userSelected)" class="btn btn-primary w-100"
+            (click)="sendNotification()">Verstuur
+    </button>
+  </div>
+  <div *ngIf="sure" class="card ml-5">
+    <div class="card-header shadow-sm">
+      <h4 *ngIf="userSelected" class="mt-1">Bericht</h4>
+      <h4 *ngIf="!userSelected" class="text-danger mt-1">No user selected!</h4>
+    </div>
+    <div class="align-new-message notification-size">
+        <textarea [(ngModel)]="notification" class="w-100 form-control h-100"
+                  (keydown.enter)="sendNotification()"></textarea>
+    </div>
+
+    <span>
+      <button *ngIf="sure" class="btn btn-primary w-50" (click)="decline()">Annuleren</button>
+      <button *ngIf="sure" [disabled]="notification === ''" class="btn btn-primary w-50" (click)="confirm()">Versturen!</button>
+    </span>
+  </div>
+</div>
